@@ -1,0 +1,46 @@
+@forelse($addresses as $address)
+                <div class="bg-black mt-5">
+                    <div class="bg-white p-5 rounded-2xl w-full flex flex-col text-black font-bold text-lg">
+                        <p>{{ $address->street }} - {{ $address->number}}</p>
+                        <p>{{ $address->neighborhood }}</p>
+                        <p>{{ $address->city }} - {{ $address->state}}</p>
+                        <p>{{ $address->postal_code }}</p>
+
+                        
+                        <!-- Edit-Delete --> 
+                        <x-addresses.dropdown />
+
+                    </div>
+                </div>
+            @empty 
+                <div class="flex flex-col">
+                    <p class="mt-5 text-center font-bold text-white py-2">
+                        You haven't registered any address yet.
+                    </p>
+                </div>
+            @endforelse
+
+            <!-- Min or max address -->
+            @if(empty(auth()->user()->addresses->count()) || auth()->user()->addresses->count() < 3 )
+                <!-- Craate --> 
+                <div x-data="{add: false}" >
+
+                    <button type="button" @click="add=true" x-show="!add" class="bg-amber-400 p-2 px-5 mt-5 rounded text-center font-bold w-full text-center">
+                        Add
+                    </button>
+
+                    <div x-show="add">
+                        <x-addresses.form :countries="$countries" title="Add Address"/>
+
+                        <button type="button" @click="add = false" class="mt-4 font-black bg-red-600 hover:bg-red-500 w-full p-2 rounded cursor-pointer">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            @else 
+                <div class="mt-5">
+                    <p class="mt-5 text-center font-bold text-white py-2">
+                        You can't have more than 3 addresses.
+                    </p>
+                </div>
+            @endif
