@@ -7,10 +7,12 @@ use App\Http\Requests\Adresses\StoreAdressesRequest;
 use App\Http\Requests\Adresses\UpdateAddressesRequest;
 use App\Models\Addresses;
 use App\Models\Countries;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 class AdressesController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Update the specified resource in storage.
      */
@@ -43,7 +45,7 @@ class AdressesController extends Controller
      */
     public function update(UpdateAddressesRequest $request, Addresses $address)
     {
-        // POLICY 
+        $this->authorize('update', $address);
 
         $data = $request->validated();
 
@@ -57,7 +59,7 @@ class AdressesController extends Controller
      */
     public function destroy(Addresses $address)
     {
-        // POLICY 
+        $this->authorize('delete', $address);
 
         $address->delete();
 

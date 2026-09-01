@@ -23,7 +23,7 @@ class UpdateAddressesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'postal_code' => ['required', 'string', 'max:20'],
+            'postal_code' => ['required', 'string','max:20'],
             'city' => ['required', 'string', 'max:100'],
             'state' => ['required', 'string', 'max:100'],
             'neighborhood' => ['required', 'string', 'max:100'],

@@ -17,10 +17,10 @@
             <!-- Products -->
             <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 @forelse ($products as $product)
-                    <a href="{{ route('product.show', $product) }}" class="group overflow-hidden rounded-xl border border-black/10 bg-black shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <a href="{{ route('products.show', $product) }}" class="group overflow-hidden rounded-xl border border-black/10 bg-black shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
                         <!-- Product Image -->
                         <div class="aspect-square overflow-hidden bg-gray-100">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_617918-MLA96431049734_102025-O.webp" alt="{{ $product->name }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
                         </div>
 
                         <!-- Product Information -->
@@ -39,7 +39,7 @@
                         </div>
                     </a>
                 @empty
-                    <p class="col-span-full py-12 text-center text-2xl font-bold text-black">
+                    <p class="col-span-full py-12 text-center mt-15 text-2xl font-bold text-black">
                         Couldn't find any product.
                     </p>
                 @endforelse

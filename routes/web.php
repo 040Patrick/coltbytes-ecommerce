@@ -3,7 +3,7 @@ declare(strict_types=1);
 use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Adresses\AdressesController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Phone\PhoneController;
+use App\Http\Controllers\Products\ProductsController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\RegisterController;
@@ -23,13 +24,10 @@ use Illuminate\Support\Facades\Route;
  * GLOBAL ROUTES
  */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 // Shop 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-
 // Contact
 Route::resource('/contact', ContactController::class)->only('index', 'store');
-
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
@@ -72,16 +70,18 @@ Route::middleware('auth')->group(function () {
         Route::resource('/phone', PhoneController::class)->only('index', 'update', 'destroy', 'store');
         // Adresses
         Route::resource('/addresses', AdressesController::class);
-        
-        // Admin
+        // Products
+        Route::resource('/products', ProductsController::class)->only('show');
+
+        /**
+         * Admin Group
+         */
         Route::middleware('admin')->prefix('admin')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
-            Route::resource('/product', ProductController::class)->except('index', 'edit', 'store', 'update');
+            // Admin product
+            Route::resource('/products', AdminProductsController::class)->names('admin.products');
         });
     });
-
-    // Show Product
-    Route::get('product/{product}', [ProductController::class, 'show'])->name('product.show');
 
     // VERIFY EMAIL
     Route::controller(VerifyEmailController::class)->group(function () {

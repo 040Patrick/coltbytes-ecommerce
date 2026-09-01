@@ -9,6 +9,8 @@
                 Admin Panel
             </h1>
 
+            <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
+
             <p class="mt-2 text-gray-500">
                 Manage your store and application.
             </p>
@@ -41,8 +43,7 @@
             </a>
 
             <!-- Orders -->
-            <a href="#"
-               class="group rounded-2xl border border-black/10 bg-black p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
+            <a href="#" class="group rounded-2xl border border-black/10 bg-black p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
 
                 <div class="mb-6 flex items-center justify-between">
                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-400 text-xl font-bold text-black">
@@ -100,17 +101,13 @@
             </p>
 
             <div class="mt-6 flex flex-wrap gap-4">
-
-                <a href="{{ route('admin.products.create') }}"
-                   class="rounded-xl bg-amber-400 px-6 py-3 font-bold text-black transition hover:bg-amber-300">
+                <a href="" class="rounded-xl bg-amber-400 px-6 py-3 font-bold text-black transition hover:bg-amber-300">
                     Add Product
                 </a>
 
-                <a href="{{ route('admin.products.index') }}"
-                   class="rounded-xl border border-white/10 px-6 py-3 font-bold text-white transition hover:border-amber-400/40 hover:text-amber-400">
+                <a href="" class="rounded-xl border border-white/10 px-6 py-3 font-bold text-white transition hover:border-amber-400/40 hover:text-amber-400">
                     View Products
                 </a>
-
             </div>
 
         </section>

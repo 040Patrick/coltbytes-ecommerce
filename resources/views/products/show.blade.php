@@ -12,7 +12,7 @@
 
             <!-- Product Image -->
             <div class="flex items-center justify-center bg-gray-100 p-10">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="max-h-[600px] w-full object-contain">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_617918-MLA96431049734_102025-O.webp" alt="{{ $product->name }}" class="max-h-[600px] w-full object-contain">
             </div>
 
             <!-- Product Information -->
@@ -54,7 +54,15 @@
                 <div class="mt-10 space-y-3 border-t border-white/10 pt-6 text-sm">
                     <div class="flex justify-between text-gray-400">
                         <span>Availability</span>
-                        <span class="font-bold text-green-400">In Stock</span>
+                        @php 
+                            $inStock = $product->stock > 0;
+                        @endphp
+                        <span class="font-bold {{ $inStock ? 'text-green-600' : 'text-red-600' }}">{{ $inStock ? 'In Stock' : 'Sold out' }}</span>
+                    </div>
+
+                    <div class="flex justify-between text-gray-400">
+                        <span>Quantity</span>
+                        <span class="text-white">{{ $product->stock }}</span>
                     </div>
 
                     <div class="flex justify-between text-gray-400">

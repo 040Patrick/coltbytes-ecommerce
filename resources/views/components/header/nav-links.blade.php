@@ -5,7 +5,7 @@
     </a>
 
     <!-- Links -->
-    @if(auth()->user()->hasRole(['admin']))
+    @if(auth()->user()?->hasRole(['admin']))
         <a href="{{ route('admin.index') }}" class="text-1xl text-white text-center p-3 bg-blue-900 rounded h-full">Admin</a>
     @endif
     
@@ -32,8 +32,8 @@
 
     @else  
         <div class="flex justify gap-2">
-            <a href="{{ route('register.index') }}" class="text-1xl text-black text-center bg-amber-400 rounded-2xl">Register</a>
-            <a href="{{ route('login') }}" class="text-1xl text-black text-center  bg-amber-400 rounded-2xl p-3">Login</a>
+            <a href="{{ route('register.index') }}" class="text-1xl p-3 text-black text-center bg-amber-400 rounded-2xl hover:bg-amber-300">Register</a>
+            <a href="{{ route('login') }}" class="text-1xl text-black text-center  bg-amber-400 rounded-2xl p-3 hover:bg-amber-300">Login</a>
         </div>
     @endauth
 </nav>
