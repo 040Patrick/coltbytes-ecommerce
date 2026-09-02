@@ -82,5 +82,3 @@
                     {{ $button}}
                 </button> 
             </div>
-
-

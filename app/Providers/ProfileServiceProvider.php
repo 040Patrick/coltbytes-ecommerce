@@ -30,6 +30,5 @@ class ProfileServiceProvider extends ServiceProvider
                 Limit::perMinute(1);
             }); 
         }
-        
     }
 }

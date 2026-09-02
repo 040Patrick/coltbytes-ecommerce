@@ -1,5 +1,4 @@
 @props(['countries', 'address'])
-
 <div x-data="{add: false}" class="flex gap-2 justify-center">
 
     <!-- Edit -->

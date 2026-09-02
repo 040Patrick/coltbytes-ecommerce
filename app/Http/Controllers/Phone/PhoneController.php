@@ -57,7 +57,7 @@ class PhoneController extends Controller
      */
     public function destroy(Phone $phone): RedirectResponse
     {
-        $this->authorize('update', $phone);
+        $this->authorize('delete', $phone);
 
         $phone->delete();
 

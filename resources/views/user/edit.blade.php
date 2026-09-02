@@ -77,38 +77,37 @@
             </div>
 
             <!-- Delete with alpine (made by ia) -->
-            <div x-data="{ showDeleteConfirmation: false }" class="mt-5 px-5">
+            <div x-data="{ confirmDelete: false }" class="mt-5 px-5">
 
                 <!-- Botão principal -->
-                <button type="button" @click="showDeleteConfirmation = true" class="w-full rounded-lg bg-red-600 px-7 py-3 font-bold text-black hover:bg-red-700">
+                <button type="button" @click="confirmDelete = true" class="w-full rounded-lg bg-red-600 px-7 py-3 font-bold text-black hover:bg-red-700">
                     Delete
                 </button>
 
                 <!-- Confirmação -->
-                <div x-show="showDeleteConfirmation" class="mt-4 rounded-lg bg-white p-5">
+                <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
                     <form action="{{ route('user.destroy', auth()->user()) }}" method="post">
                         @csrf
                         @method('DELETE')
 
-                        <div class="flex flex-col items-center justify-center gap-4">
+                        <div class="w-full max-w-md rounded-xl bg-gray-950 p-8 shadow-xl">
+                            <h2 class="text-xl font-bold text-white">Delete product?</h2>
 
-                            <p class="text-center py-5 font-bold text-black">
+                            <p class="mt-2 text-gray-400">
                                 Are you sure you want to delete your account?
-                                Your account will be permanently deleted within 30 days.
+                                if yes, your account you'll be deleted within 30 days. 
                             </p>
 
-                            <div class="flex gap-5">
-                                <!-- Confirm and delete -->
-                                <button type="submit" class="rounded-lg bg-red-600 px-6 py-3 font-bold text-white hover:bg-red-700">
-                                    Yes, Delete account
-                                </button>
-
-                                <button type="button" @click="showDeleteConfirmation = false " class="rounded-lg bg-amber-400 px-6 py-3 font-bold text-black hover:bg-amber-300">
+                            <div class="mt-6 flex justify-end gap-3">
+                                <button type="button" @click="confirmDelete = false" class="rounded bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600">
                                     Cancel
                                 </button>
+                                <button type="submit" class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-400">
+                                    Yes, delete it
+                                </button>
                             </div>
-                        </div>
 
+                        </div>
                     </form>
                 </div>
             </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductsController;
+use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Adresses\AdressesController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -80,6 +81,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             // Admin product
             Route::resource('/products', AdminProductsController::class)->names('admin.products');
+            // Product Image
+            Route::resource('/products/images', ProductImageController::class)->names('admin.products.image')->only('store', 'destroy');
         });
     });
 
