@@ -19,10 +19,11 @@
                 @forelse ($products as $product)
                     <a href="{{ route('products.show', $product) }}" class="group overflow-hidden rounded-xl border border-black/10 bg-black shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
                         <!-- Product Image -->
-                        <div class="aspect-square overflow-hidden bg-gray-100">
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_617918-MLA96431049734_102025-O.webp" alt="{{ $product->name }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
-                        </div>
-
+                        @foreach($product->images as $image)
+                            <div class="aspect-square overflow-hidden bg-gray-100">
+                                <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                            </div>
+                        @endforeach
                         <!-- Product Information -->
                         <div class="p-5">
                             <h2 class="truncate text-2xl text-center mb-10 font-bold text-white">

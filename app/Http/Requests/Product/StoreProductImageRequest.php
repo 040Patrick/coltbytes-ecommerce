@@ -23,10 +23,8 @@ class StoreProductImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'array', 'min:1'],
-            'image.*' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
-            
-            'product_id' => ['required', 'integer', 'exists:products,id'],
+            'images' => ['required', 'array', 'max:10'],
+            'images.*' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }

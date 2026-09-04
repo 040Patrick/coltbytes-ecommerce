@@ -18,6 +18,8 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Requests\Product\StoreProductImageRequest;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
@@ -75,14 +77,16 @@ Route::middleware('auth')->group(function () {
         Route::resource('/products', ProductsController::class)->only('show');
 
         /**
-         * Admin Group
+     * Admin Group
          */
         Route::middleware('admin')->prefix('admin')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             // Admin product
             Route::resource('/products', AdminProductsController::class)->names('admin.products');
             // Product Image
-            Route::resource('/products/images', ProductImageController::class)->names('admin.products.image')->only('store', 'destroy');
+            Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
+            Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
+
         });
     });
 

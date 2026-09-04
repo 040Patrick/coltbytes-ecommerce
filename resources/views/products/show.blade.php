@@ -11,10 +11,11 @@
         <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black shadow-xl">
 
             <!-- Product Image -->
-            <div class="flex items-center justify-center bg-gray-100 p-10">
-                <img src="https://http2.mlstatic.com/D_NQ_NP_617918-MLA96431049734_102025-O.webp" alt="{{ $product->name }}" class="max-h-[600px] w-full object-contain">
-            </div>
-
+            @foreach($product->images as $image)
+                <div class="flex items-center justify-center bg-gray-100 p-10">
+                    <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="max-h-[600px] w-full object-contain">
+                </div>
+            @endforeach
             <!-- Product Information -->
             <div class="p-8 lg:p-12">
 

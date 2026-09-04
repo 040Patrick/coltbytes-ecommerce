@@ -25,7 +25,6 @@
                 <!-- Create product -->
                 <div x-data="{add : false }">
 
-                    
                     <button type="button" @click="add = true" x-show="!add" class="bg-amber-400 mt-5 p-3 px-10 text-black hover:bg-amber-300 rounded text-center font-bold"> 
                         Create new Product
                     </button>
@@ -47,9 +46,13 @@
 
             </div>
 
-            <!-- Session message -->
+            <!-- Session messages -->
             @session('product')
                 <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('product') }}</div>
+            @endsession
+
+            @session('image')
+                <span class="bg-green-600 text-white text-center font-bold p-2 rounded">{{ session('image')}}</span>
             @endsession
 
             <!-- Products -->
@@ -85,10 +88,11 @@
                     <div x-show="update" class="rounded-x mt-5 border border-gray-800 bg-gray-950 p-8 shadow-xl">
 
                         <!-- Product add Image -->
-                        <form action="{{ route('admin.products.image.store') }}" method="post" enctype="multipart/form-data">>
-                            @csrf 
-                            
-                            <x-admin.products.image-form button="Add images" title="Images"/>
+                        <form  action="{{ route('products.images.store', $product) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                           
+                            <x-admin.products.image-form :product="$product" />
                         </form>
 
                         <!-- Product -->
