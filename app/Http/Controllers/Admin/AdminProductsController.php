@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,7 +8,6 @@ use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -49,7 +48,7 @@ class AdminProductsController extends Controller
 
         $product->update($data);
 
-        return back()->with(['product' => "Product #{$product->id} updated successfully."]);
+        return back()->with(['product' => "Product #{$product->id} successfully updated."]);
     }
 
     /**
@@ -61,6 +60,6 @@ class AdminProductsController extends Controller
 
         $product->delete();
 
-        return back()->with(['product' => "Product #{$product->id} deleted successfully."]);
+        return back()->with(['product' => "Product #{$product->id} successfully deleted."]);
     }
 }

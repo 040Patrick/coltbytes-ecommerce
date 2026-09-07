@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Contracts\ProductImageServiceInteraface;
@@ -19,24 +19,20 @@ class ProductImageController extends Controller
     /**
      * Store images
      */
-    public function store(StoreProductImageRequest $request, Product $product)
+    public function store(StoreProductImageRequest $request, Product $product):RedirectResponse
     {
         $this->productImage->store($request, $product);
 
-        return back()->with(['image' => 'New image had been added.']);
+        return back()->with(['image' => 'Image successfully added.']);
     }
 
     /**
      * Delete images
      */
-    
-    public function destroy(ProductImage $image)
+    public function destroy(ProductImage $image): RedirectResponse
     {
-        dd('image delete');
-        //$this->authorize('imageDelete', $image);
-
         $this->productImage->delete($image);
 
-        return back();
+        return back()->with(['image' => 'Image successfully deleted.']);
     }
 }

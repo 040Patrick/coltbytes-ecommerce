@@ -1,12 +1,9 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\User;
 
-use App\Events\Email\SendRegisteredEmail;
-use App\Events\Registered\RegisteredEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
-use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 
@@ -27,7 +24,7 @@ class RegisterController extends Controller
     /**
      * Register user
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $data = $request->validated();
 

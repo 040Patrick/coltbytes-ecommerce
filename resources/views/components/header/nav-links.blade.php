@@ -14,7 +14,6 @@
     @auth
         <a href="{{ route('profile.index') }}" class="text-1xl text-white text-center rounded p-3 hover:bg-amber-400 hover:text-black h-full">Profile</a>
     @endauth
-    <a href="{{ route('shop.index') }}" class="text-1xl text-white text-center rounded p-3 hover:bg-amber-400 hover:text-black h-full">Shop</a>
     <a href="{{ route('contact.index') }}" class="text-1xl p-3 text-white text-center rounded p-3 hover:bg-amber-400 hover:text-black h-full">Contact</a>
     <a href="{{ route('about.index') }}" class="text-1xl text-white text-center p-3 rounded hover:bg-amber-400 hover:text-black h-full">About</a>
     <!-- Auth and Guest links -->

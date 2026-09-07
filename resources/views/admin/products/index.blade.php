@@ -1,6 +1,5 @@
 @extends('layout.layout')
 
-
 @section('content')
     <div class="mt-30 mx-30 bg-black rounded-2xl">
         <!-- Return button -->
@@ -51,10 +50,6 @@
                 <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('product') }}</div>
             @endsession
 
-            @session('image')
-                <span class="bg-green-600 text-white text-center font-bold p-2 rounded">{{ session('image')}}</span>
-            @endsession
-
             <!-- Products -->
             @forelse($products as $product)
                 <div class="m-5 flex flex-row items-center gap-4 rounded bg-white px-10 py-5">
@@ -72,44 +67,25 @@
                         </p>
                     </div>
 
+                    <!-- Images session messages -->
+                    @session('image')
+                        <div class="bg-green-600 font-bold text-white p-2 rounded"> {{ session('image')}}</div>
+                    @endsession
+
+                    <!-- Update -->
+                    <div x-data="{ updateProduct: false }" class="flex items-center gap-3">
+                        <x-admin.products.update-product :product="$product"/>
+                    </div>
+
                     <!-- Delete product -->
                     <div x-data="{ confirmDelete: false }" class="flex items-center gap-3">
-                        <x-admin.products.delete :product="$product"/>
-                    </div>
-                </div>
-
-                <!-- Edit product -->
-                <div x-data="{update : false }" class="w-full">
-                    <button type="button" @click="update = true" x-show="!update" class="bg-amber-400 mx-10 center p-3 px-20 text-black hover:bg-amber-300 rounded text-center font-bold"> 
-                        Update
-                    </button>
-
-                    <!-- Form -->
-                    <div x-show="update" class="rounded-x mt-5 border border-gray-800 bg-gray-950 p-8 shadow-xl">
-
-                        <!-- Product add Image -->
-                        <form  action="{{ route('products.images.store', $product) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-
-                           
-                            <x-admin.products.image-form :product="$product" />
-                        </form>
-
-                        <!-- Product -->
-                        <form action="{{ route('admin.products.update', $product) }}" method="post">
-                            @csrf 
-                            @method('PATCH')
-                            <x-admin.products.form title="Update" button="Update" :product="$product"/>      
-                        </form>
-                            
-                        <!-- Close Update form -->
-                        <button @click="update = false" type="button" class="center bg-red-500 hover:bg-red-400 w-full p-3 text-black rounded text-center font-bold"> 
-                            Close
-                        </button>
+                        <x-admin.products.product-delete :product="$product"/>    
                     </div>
                 </div>
             @empty
-                {{-- SOMETHING HERE --}}
+                <p class="text-white font-bold text-center p-3 mb-5 text-2xl">
+                    Register your first product.
+                </p>
             @endforelse
         </section>
     </div>

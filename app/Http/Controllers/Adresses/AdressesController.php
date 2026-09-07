@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Adresses;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +8,7 @@ use App\Http\Requests\Adresses\UpdateAddressesRequest;
 use App\Models\Addresses;
 use App\Models\Countries;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class AdressesController extends Controller
@@ -57,7 +58,7 @@ class AdressesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Addresses $address)
+    public function destroy(Addresses $address): RedirectResponse
     {
         $this->authorize('delete', $address);
 

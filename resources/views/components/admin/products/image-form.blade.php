@@ -6,13 +6,6 @@
         @forelse($product->images as $index => $image)
             <div x-show="current === {{ $index }}" x-transition class="relative flex aspect-video items-center justify-center">
                 <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="Imagem do produto" class="h-full w-full object-contain">
-
-                <!-- Delete -->
-                <form action="{{ route('products.images.destroy', $image) }}" method="POST" class="absolute left-4 top-4 z-30">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="rounded-lg bg-red-500 px-4 py-2 font-bold text-white shadow-lg transition hover:bg-red-400">Delete</button>
-                </form>
             </div>
         @empty
             <div class="flex aspect-video items-center justify-center text-gray-400">No imagens registered yet.</div>

@@ -23,9 +23,4 @@ class ProductPolicy
     {
         return $user->id === $product->user_id;
     }
-
-    public function imageDelete(User $user, ProductImage $image): bool
-    {
-        return $user->products()->whereKey($image->product_id)->exists();
-    }
 }

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Phone;
 
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class PhoneController extends Controller
     /**
      * Create a phone
      */
-    public function store(UpdatePhoneRequest $request)
+    public function store(UpdatePhoneRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
@@ -39,7 +39,7 @@ class PhoneController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePhoneRequest $request, Phone $phone)
+    public function update(UpdatePhoneRequest $request, Phone $phone): RedirectResponse
     {
         $this->authorize('update', $phone);
 

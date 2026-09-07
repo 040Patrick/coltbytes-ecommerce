@@ -1,9 +1,10 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
@@ -18,7 +19,7 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password');
     }
 
-    public function email(Request $request)
+    public function email(Request $request): RedirectResponse
     {
         $request->validate(['email' => 'required|email']);
 

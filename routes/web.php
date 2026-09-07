@@ -27,8 +27,6 @@ use Illuminate\Support\Facades\Route;
  * GLOBAL ROUTES
  */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Shop 
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 // Contact
 Route::resource('/contact', ContactController::class)->only('index', 'store');
 // About

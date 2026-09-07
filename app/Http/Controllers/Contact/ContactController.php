@@ -1,17 +1,19 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Contact;
 
 use App\Events\Email\ReceiveContactEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\StoreContactRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
 {
     /** 
      * Return contact view
      */
-    public function index()
+    public function index(): View
     {
         return view('contact.index', ['title' => 'Contact']);
     }
@@ -19,7 +21,7 @@ class ContactController extends Controller
     /**
      * Send contact email
      */
-    public function store(StoreContactRequest $request)
+    public function store(StoreContactRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
