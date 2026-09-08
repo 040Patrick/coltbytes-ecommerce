@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mx-30 mt-20">
+    <div class="mx-30 mt-40">
 
         <!-- Header -->
         <div class="mb-10">
@@ -43,7 +43,7 @@
             </a>
 
             <!-- Orders -->
-            <a href="#" class="group rounded-2xl border border-black/10 bg-black p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
+            <a href="{{ route('order.index') }}" class="group rounded-2xl border border-black/10 bg-black p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
 
                 <div class="mb-6 flex items-center justify-between">
                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-400 text-xl font-bold text-black">
@@ -88,29 +88,5 @@
             </a>
 
         </div>
-
-        <!-- Quick Actions -->
-        <section class="mt-10 rounded-2xl border border-black/10 bg-black p-8">
-
-            <h2 class="text-2xl font-bold text-white">
-                Quick Actions
-            </h2>
-
-            <p class="mt-2 text-gray-400">
-                Frequently used administrative actions.
-            </p>
-
-            <div class="mt-6 flex flex-wrap gap-4">
-                <a href="" class="rounded-xl bg-amber-400 px-6 py-3 font-bold text-black transition hover:bg-amber-300">
-                    Add Product
-                </a>
-
-                <a href="" class="rounded-xl border border-white/10 px-6 py-3 font-bold text-white transition hover:border-amber-400/40 hover:text-amber-400">
-                    View Products
-                </a>
-            </div>
-
-        </section>
-
     </div>
 @endsection

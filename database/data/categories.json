@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Electronics",
+        "slug": "electronics"
+    },
+    {
+        "name": "Computers",
+        "slug": "computers"
+    },
+    {
+        "name": "Smartphones",
+        "slug": "smartphones"
+    },
+    {
+        "name": "Gaming",
+        "slug": "gaming"
+    },
+    {
+        "name": "Accessories",
+        "slug": "accessories"
+    },
+    {
+        "name": "Audio",
+        "slug": "audio"
+    },
+    {
+        "name": "Cameras",
+        "slug": "cameras"
+    },
+    {
+        "name": "Televisions",
+        "slug": "televisions"
+    },
+    {
+        "name": "Monitors",
+        "slug": "monitors"
+    },
+    {
+        "name": "Keyboards",
+        "slug": "keyboards"
+    },
+    {
+        "name": "Mice",
+        "slug": "mice"
+    },
+    {
+        "name": "PC Components",
+        "slug": "pc-components"
+    },
+    {
+        "name": "Storage",
+        "slug": "storage"
+    },
+    {
+        "name": "Networking",
+        "slug": "networking"
+    },
+    {
+        "name": "Software",
+        "slug": "software"
+    }
+]

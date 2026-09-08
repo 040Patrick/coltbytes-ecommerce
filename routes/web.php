@@ -4,6 +4,7 @@ use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductsController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Adresses\AdressesController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -84,6 +85,8 @@ Route::middleware('auth')->group(function () {
             // Product Image
             Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
+            // Order
+            Route::resource('/order', OrderController::class);
 
         });
     });

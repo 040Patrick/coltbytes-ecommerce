@@ -29,9 +29,7 @@ class PhoneController extends Controller
     {
         $data = $request->validated();
 
-        Auth::user()->phone()->create([
-            'phone' => $data['phone']
-        ]);
+        Auth::user()->phone()->create(['phone' => $data['phone']]);
 
         return back()->with(['updated' => 'Phone has been created.']);
     }
@@ -45,9 +43,7 @@ class PhoneController extends Controller
 
         $data = $request->validated();
 
-        $phone->update([
-            'phone' => $data['phone']
-        ]);
+        $phone->update(['phone' => $data['phone']]);
 
         return back()->with(['updated' => 'Phone has been updated.']);
     }
