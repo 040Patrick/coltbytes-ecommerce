@@ -5,7 +5,7 @@
     @method('delete')
 
     <!-- Event -->
-    <button type="button" @click="confirmDelete = true" class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-400">
+    <button type="button" @click="confirmDelete = true" class="rounded bg-red-500 px-4 py-2 font-bold text-black hover:bg-red-400">
         Delete
     </button>
 
@@ -25,7 +25,7 @@
                     Cancel
                 </button>
 
-                <button type="submit" class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-400">
+                <button type="submit" class="rounded bg-red-500 px-4 py-2 font-bold text-black hover:bg-red-400">
                     Delete
                 </button>
             </div>

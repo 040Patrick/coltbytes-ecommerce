@@ -4,6 +4,7 @@ use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductsController;
+use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Adresses\AdressesController;
@@ -16,11 +17,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Phone\PhoneController;
 use App\Http\Controllers\Products\ProductsController;
 use App\Http\Controllers\Profile\ProfileController;
-use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
-use App\Http\Requests\Product\StoreProductImageRequest;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
@@ -87,7 +85,8 @@ Route::middleware('auth')->group(function () {
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
             // Order
             Route::resource('/order', OrderController::class);
-
+            // User
+            Route::resource('/users', AdminUsersController::class)->names('admin.users');
         });
     });
 

@@ -18,10 +18,16 @@
                 <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
 
                 <p class="mt-2 mb-2 text-gray-500">
-                    Manage your store and application.
+                    Manage or see your orders.
                 </p>
             </div>
 
+            @session('order')
+                <div class="bg-green-600 text-white text-center font-bold p-2 rounded">
+                    {{ session('order') }}
+                </div> 
+            @endsession
+            
             <!-- Show orders -->
             <div class="flex flex-col gap-5 m-5 font-bold">
                 @forelse($orders as $order)
@@ -33,6 +39,8 @@
                             </p>
                             <p class="font-bold text-amber-500">
                                 Status: {{ $order->status }}
+
+                                <x-admin.order.status-dropdown :order="$order"/>
                             </p>
                             <p>
                                 Total:
