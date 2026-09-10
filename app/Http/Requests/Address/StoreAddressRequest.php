@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Adresses;
+namespace App\Http\Requests\Address;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAddressesRequest extends FormRequest
+class StoreAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class UpdateAddressesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'postal_code' => ['required', 'string','max:20'],
+            'postal_code' => ['required', 'string', 'max:20'],
             'city' => ['required', 'string', 'max:100'],
             'state' => ['required', 'string', 'max:100'],
             'neighborhood' => ['required', 'string', 'max:100'],

@@ -3,11 +3,11 @@ declare(strict_types=1);
 use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminProductsController;
-use App\Http\Controllers\Admin\AdminUsersController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductImageController;
-use App\Http\Controllers\Adresses\AdressesController;
+use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Product\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\Product\ProductImageController;
+use App\Http\Controllers\Address\AddressController;
+use App\Http\Controllers\Admin\User\UserController as AdminUserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -15,11 +15,11 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Phone\PhoneController;
-use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; 
 
 
 /**
@@ -69,9 +69,9 @@ Route::middleware('auth')->group(function () {
         // Phone
         Route::resource('/phone', PhoneController::class)->only('index', 'update', 'destroy', 'store');
         // Adresses
-        Route::resource('/addresses', AdressesController::class);
+        Route::resource('/addresses', AddressController::class);
         // Products
-        Route::resource('/products', ProductsController::class)->only('show');
+        Route::resource('/products', ProductController::class)->only('show');
 
         /**
      * Admin Group
@@ -79,14 +79,16 @@ Route::middleware('auth')->group(function () {
         Route::middleware('admin')->prefix('admin')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             // Admin product
-            Route::resource('/products', AdminProductsController::class)->names('admin.products');
+            Route::resource('/products', AdminProductController::class)->names('admin.products');
             // Product Image
             Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
             // Order
             Route::resource('/order', OrderController::class);
             // User
-            Route::resource('/users', AdminUsersController::class)->names('admin.users');
+            Route::resource('/users', AdminUserController::class)->names('admin.users');
+            // Role 
+            Route::resource('/Role', OrderController::class);
         });
     });
 

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,8 +22,9 @@ class Addresses extends Model
         'number',
         'complement'
     ];
+
     /**
-     * Relations
+     * @Relations
      */
     public function country(): BelongsTo
     {

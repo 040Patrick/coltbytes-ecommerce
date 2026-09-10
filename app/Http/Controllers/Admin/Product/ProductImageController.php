@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Contracts\ProductImageServiceInteraface;
 use App\Http\Controllers\Controller;

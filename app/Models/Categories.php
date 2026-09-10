@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Categories extends Model
 {
-    /** @use HasFactory<\Database\Factories\CategoriesFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -17,7 +16,7 @@ class Categories extends Model
     ];
 
     /**
-     * Relations
+     * @Relations
      */
     public function products(): BelongsToMany
     {

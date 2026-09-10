@@ -1,12 +1,12 @@
 <?php
-
-namespace App\Http\Controllers\Admin;
+declare(strict_types=1);
+namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class OrderController extends Controller
 {
@@ -23,13 +23,11 @@ class OrderController extends Controller
     /**
      * Update order status
      */
-    public function update(Request $request, Order $order)
+    public function update(UpdateOrderRequest $request, Order $order): RedirectResponse
     {
-        $data = $request->validate(['status' => ['required', 'string', 'in:pending,paid,shipped,completed,cancelled']]);
+        $data = $request->validated();
 
-        $order->update([
-            'status' => $data['status'],
-        ]);
+        $order->update($data);
 
         return back()->with(['order' => "Order #{$order->id} has been updated."]);
     }

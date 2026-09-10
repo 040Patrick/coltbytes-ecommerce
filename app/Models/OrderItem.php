@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,7 +19,7 @@ class OrderItem extends Model
     ];
 
     /**
-     * Relations
+     * @Relations
      */
     public function order(): BelongsTo
     {

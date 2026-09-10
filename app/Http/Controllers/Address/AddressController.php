@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers\Adresses;
+namespace App\Http\Controllers\Address;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Adresses\StoreAdressesRequest;
-use App\Http\Requests\Adresses\UpdateAddressesRequest;
+use App\Http\Requests\Address\StoreAddressRequest;
+use App\Http\Requests\Address\UpdateAddressRequest;
 use App\Models\Addresses;
 use App\Models\Countries;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-class AdressesController extends Controller
+class AddressController extends Controller
 {
     use AuthorizesRequests;
     /**
@@ -32,7 +32,7 @@ class AdressesController extends Controller
     /**
      * Store a new address
      */
-    public function store(StoreAdressesRequest $request)
+    public function store(StoreAddressRequest $request)
     {
         $data = $request->validated();
 
@@ -44,7 +44,7 @@ class AdressesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAddressesRequest $request, Addresses $address)
+    public function update(UpdateAddressRequest $request, Addresses $address)
     {
         $this->authorize('update', $address);
 

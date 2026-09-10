@@ -2,8 +2,6 @@
 declare(strict_types=1);
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Notifications\VerifyEmailNotification;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,16 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Override;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, SoftDeletes;
 
-    /**
-     * array fillable collumns
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -32,9 +25,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at'
     ];
 
-    /**
-     * array hidden collunms
-     */
     protected $hidden = [
         'password',
         'remember_token'
@@ -109,6 +99,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->roles()->whereIn('slug', $roles)->exists();
     }
-
-
 }

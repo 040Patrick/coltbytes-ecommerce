@@ -1,14 +1,12 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Show product

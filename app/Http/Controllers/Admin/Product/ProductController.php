@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
-class AdminProductsController extends Controller
+class ProductController extends Controller
 {
     use AuthorizesRequests;
     /**
@@ -39,8 +39,6 @@ class AdminProductsController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
-        $this->authorize('update', $product);
-
         $data = $request->validated();
 
         $product->update($data);
@@ -53,8 +51,6 @@ class AdminProductsController extends Controller
      */
     public function destroy(Product $product): RedirectResponse
     {
-        $this->authorize('delete', $product);
-
         $product->delete();
 
         return back()->with(['product' => "Product #{$product->id} successfully deleted."]);
