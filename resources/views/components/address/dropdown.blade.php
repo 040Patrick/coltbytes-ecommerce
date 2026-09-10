@@ -24,7 +24,7 @@
                     @csrf 
                     @method('patch')
                         
-                    <x-addresses.form :countries="$countries" title="Edit" :address="$address" button="Edit"/>
+                    <x-address.form :countries="$countries" title="Edit" :address="$address" button="Edit"/>
                 </form>
             </div>
         </div>
@@ -35,14 +35,5 @@
     </div>
 
     <!-- Delete -->
-    <div x-show="!add" >
-        <form action="{{ route('addresses.destroy', $address) }}" method="post">
-            @csrf 
-            @method('delete')
-
-            <button type="submit" class="px-5 bg-red-600 p-2 rounded text-center text-black font-bold hover:bg-red-500">
-                Delete
-            </button>
-        </form>
-    </div>
+    <x-address.modal-delete :address="$address"/>
 </div>

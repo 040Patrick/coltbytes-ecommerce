@@ -33,7 +33,7 @@
 
                         <form action="{{ route('admin.products.store') }}" method="post" class="rounded">
                             @csrf 
-                            <x-admin.products.form title="Create" button="Create"/>      
+                            <x-admin.product.form title="Create" button="Create"/>      
                         </form>
                         
                         <!-- Close create form -->
@@ -46,6 +46,10 @@
             </div>
 
             <!-- Session messages -->
+            @session('image')
+                <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('image') }}</div>
+            @endsession
+
             @session('product')
                 <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('product') }}</div>
             @endsession
@@ -67,19 +71,14 @@
                         </p>
                     </div>
 
-                    <!-- Images session messages -->
-                    @session('image')
-                        <div class="bg-green-600 font-bold text-white p-2 rounded"> {{ session('image')}}</div>
-                    @endsession
-
                     <!-- Update -->
                     <div x-data="{ updateProduct: false }" class="flex items-center gap-3">
-                        <x-admin.products.update-product :product="$product"/>
+                        <x-admin.product.product-update :product="$product"/>
                     </div>
 
                     <!-- Delete product -->
                     <div x-data="{ confirmDelete: false }" class="flex items-center gap-3">
-                        <x-admin.products.product-delete :product="$product"/>    
+                        <x-admin.product.modal-delete :product="$product"/>    
                     </div>
                 </div>
             @empty

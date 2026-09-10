@@ -7,7 +7,6 @@ use App\Http\Requests\Phone\UpdatePhoneRequest;
 use App\Models\Phone;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -31,7 +30,7 @@ class PhoneController extends Controller
 
         Auth::user()->phone()->create(['phone' => $data['phone']]);
 
-        return back()->with(['updated' => 'Phone has been created.']);
+        return back()->with(['phone' => 'Phone has been created.']);
     }
 
     /**
@@ -45,7 +44,7 @@ class PhoneController extends Controller
 
         $phone->update(['phone' => $data['phone']]);
 
-        return back()->with(['updated' => 'Phone has been updated.']);
+        return back()->with(['phone' => 'Phone has been updated.']);
     }
 
     /**
@@ -57,6 +56,6 @@ class PhoneController extends Controller
 
         $phone->delete();
 
-        return back()->with(['updated' => 'Phone has been deleted.']);
+        return back()->with(['phone' => 'Phone has been deleted.']);
     }
 }

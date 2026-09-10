@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Models\Order;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 
 class OrderController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Return order index 
      */
@@ -17,7 +19,7 @@ class OrderController extends Controller
     {
         $orders = Order::with(['orderItems.product', 'user',])->get();
 
-        return view('admin.orders.index', ['title' => 'Admin Orders', 'orders' => $orders]);
+        return view('admin.order.index', ['title' => 'Admin Orders', 'orders' => $orders]);
     }
 
     /**
@@ -25,6 +27,8 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order): RedirectResponse
     {
+        $this->authorize('admin', $order);
+
         $data = $request->validated();
 
         $order->update($data);

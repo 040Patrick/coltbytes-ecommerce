@@ -15,7 +15,7 @@ class UserController extends Controller
     use AuthorizesRequests;
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified user.
      */
     public function edit(User $user): View
     {
@@ -23,7 +23,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user in storage.
      */
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
@@ -42,11 +42,11 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the specified user in storage .
      */
     public function destroy(User $user): RedirectResponse
     {
-        $this->authorize('update', $user);
+        $this->authorize('delete', $user);
 
         $user->delete();
 

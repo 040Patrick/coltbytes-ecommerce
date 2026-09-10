@@ -8,9 +8,17 @@ use Illuminate\Support\Facades\Auth;
 class UserPolicy
 {
     /**
-     * Create a new policy instance.
+     * Update user policy.
      */
     public function update(User $user, User $model): bool
+    {
+        return $user->id === $model->id;
+    }
+
+    /**
+     * Delete user policy.
+     */
+    public function delete(User $user, User $model): bool
     {
         return $user->id === $model->id;
     }

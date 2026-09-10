@@ -17,11 +17,12 @@
             </div>
 
             <div class="py-5 flex justify-center px-10 ">
-                @session('updated')
-                    <span class="bg-green-600 text-white text-center rounded font-bold p-2 w-full">{{ session('updated') }}</span>
+                @session('phone')
+                    <span class="bg-green-600 text-white text-center rounded font-bold p-2 w-full">{{ session('phone') }}</span>
                 @endsession
             </div>
         
+            
             <!-- Form -->
             <div class="w-full">
                 @if(auth()->user()->phone)
@@ -38,6 +39,9 @@
                         Phone
                     </label>
 
+                    @error('phone')
+                        <p class="text-red-600 font-bold text-center p-2">{{ $message }}</p>
+                    @enderror
                     <div class="flex w-full gap-3 pb-3">
                         <input type="tel" name="phone" id="phone" value="{{ old('phone', auth()->user()->phone->phone ?? '') }}" class="flex-1 rounded border border-gray-700 bg-gray-900 px-4 py-3 text-white outline-none transition focus:border-amber-400" placeholder="(00) 0000-0000">
                     <!-- Actions -->
@@ -49,14 +53,9 @@
                     </div>
                 </form>
 
+                <!-- Delete -->
                 @if(auth()->user()->phone)
-                    <form action="{{ route('phone.destroy', 'auth()->user()->phone') }}" method="post" class="shrink-0 bg-red-600 text-center mt-4 rounded-lg bg-amber-400 px-8 py-3 font-bold text-black transition hover:bg-red-700">
-                        @csrf 
-                        @method('DELETE')
-                        <button type="submit">
-                            Delete
-                        </button>
-                    </form>
+                    <x-phone.modal-delete :phone="auth()->user()->phone" />
                 @endif
             </div>
         </div>

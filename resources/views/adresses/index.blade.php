@@ -45,7 +45,7 @@
                         <!-- Form -->
                         <form action="{{ route('addresses.store') }}" method="post" class="bg-black px-5 flex flex-col">
                             @csrf 
-                            <x-addresses.form :countries="$countries" button="Create"/>
+                            <x-address.form :countries="$countries" button="Create"/>
                         </form>
 
                         <button type="button" @click="add = false" class="mt-4 font-black bg-red-600 hover:bg-red-500 w-full p-2 rounded cursor-pointer">
@@ -65,7 +65,7 @@
 
                             <!-- Edit dropdown --> 
                             <div class="p-5 mt-5">
-                                <x-addresses.dropdown :countries="$countries" :address="$address" title="Edit address"/>
+                                <x-address.dropdown :countries="$countries" :address="$address" title="Edit address"/>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                     <!-- Form -->
                                     <form action="{{ route('addresses.store') }}" method="post" class="bg-black px-5 flex flex-col">
                                         @csrf 
-                                        <x-addresses.form :countries="$countries" button="Add new Address"/>
+                                        <x-address.form :countries="$countries" button="Add new Address"/>
                                     </form>
 
                                     <button type="button" @click="add = false" class="mt-4 font-black bg-red-600 hover:bg-red-500 w-full p-2 rounded cursor-pointer">

@@ -5,7 +5,7 @@
             <label for="postal_code" class="text-white font-bold">Postal Code:</label>
             <input type="text" name="postal_code" value="{{ old('postal_code', $address?->postal_code) }}" placeholder="00-000-000" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
             @error('postal_code')
-                <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                <span class="font-bold text-red text-center text-red-600 p-2 mt-3">{{ $message }}</span>
             @enderror
         </div>
                 
@@ -14,7 +14,7 @@
             <label for="city" class="text-white font-bold">City:</label>
             <input type="text" name="city" value="{{ old('city', $address?->city) }}" placeholder="City:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
             @error('city')
-                <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                <span class="font-bold text-red  text-center text-red-600 p-2 mt-3">{{ $message }}</span>
             @enderror
         </div>
 
@@ -23,7 +23,7 @@
                 <label for="state" class="text-white font-bold">State:</label>
                 <input type="text" name="state" value="{{ old('state', $address?->state) }}" placeholder="State:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
                 @error('state')
-                    <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                    <span class="font-bold text-red  text-center text-red-600 p-2 mt-3">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -32,7 +32,7 @@
                 <label for="neighborhood" class="text-white font-bold">Neighborhood:</label>
                 <input type="text" name="neighborhood" value="{{ old('neighborhood', $address?->neighborhood) }}" placeholder="Neighborhood:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
                 @error('neighborhood')
-                    <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                    <span class="font-bold text-red text-center text-red-600 p-2 mt-3">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -41,7 +41,7 @@
                 <label for="street" class="text-white font-bold">Street:</label>
                 <input type="text" name="street" value="{{ old('street', $address?->street) }}" placeholder="Street:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
                 @error('street')
-                    <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                    <span class="font-bold text-red text-center text-red-600 p-2 mt-3">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -50,7 +50,7 @@
                 <label for="number" class="text-white font-bold">Number:</label>
                 <input type="text" name="number" value="{{ old('number', $address?->number) }}" placeholder="Number:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
                 @error('number')
-                    <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                    <span class="font-bold text-red text-center text-red-600 p-2 mt-3">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -59,7 +59,7 @@
                 <label for="complement" class="text-white font-bold">Complement:</label>
                 <input type="text" name="complement" value="{{ old('complement', $address?->complement) }}" placeholder="Complement:" class="focus:outline-none text-black font-bold bg-white p-3 rounded">
                 @error('complement')
-                    <span class="font-bold text-center text-red-600 p-2 mt-3">{{ $message }}</span>
+                    <span class="font-bold text-red text-center text-red-600 p-2 mt-3">{{ $message }}</span>
                 @enderror
             </div>
 

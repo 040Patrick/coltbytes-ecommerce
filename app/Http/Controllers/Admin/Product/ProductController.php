@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        return view('admin.products.index', ['title' => 'Admin Products','products' => Product::all()]);
+        return view('admin.product.index', ['title' => 'Admin Products','products' => Product::all()]);
     }
 
     /**

@@ -2,12 +2,14 @@
 
 @section('content')
     <div class="mt-30 mx-30 bg-black rounded-2xl">
+
         <!-- Return button -->
         <div class="flex">
             <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300text-black text-center font-bold rounded">
                 Back
             </a>
         </div>
+
         <section class="py-5">
             <!-- Header -->
             <div class="px-10 py-10">
@@ -33,6 +35,7 @@
                 @forelse($orders as $order)
 
                     <div class="w-full rounded border-2 bg-gray-100 p-5">
+
                         <div class="flex items-center justify-between">
                             <p class="rounded-2xl bg-black p-1 px-3 text-white">
                                 Order #{{ $order->id }}
@@ -66,8 +69,8 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 @empty
                     <p class="text-white">
                         No orders found.

@@ -41,5 +41,7 @@
     @enderror
 
     <!-- Submit -->
-    <button type="submit" class="w-full rounded-lg bg-amber-400 px-5 py-3 font-bold text-black shadow transition hover:bg-amber-300 hover:shadow-lg">Enviar</button>
+    <button type="submit" class="w-full rounded-lg bg-amber-400 px-5 py-3 font-bold text-black shadow transition hover:bg-amber-300 hover:shadow-lg">
+        Enviar
+    </button>
 </div>

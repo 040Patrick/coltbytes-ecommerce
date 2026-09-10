@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 
-class UpdateAddressesPolicy
+class OrderPolicy
 {
     /**
      * Create a new policy instance.

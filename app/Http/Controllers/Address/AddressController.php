@@ -22,11 +22,7 @@ class AddressController extends Controller
         $user = Auth::user()->load(['addresses.country']);
 
         $countries = Countries::all();
-        return view('adresses.index', [
-            'title' => 'Adresses', 
-            'addresses' => $user->addresses,
-            'countries' => $countries
-        ]);
+        return view('adresses.index', ['title' => 'Adresses', 'addresses' => $user->addresses,'countries' => $countries]);
     }
 
     /**

@@ -47,7 +47,7 @@
                     <form action="{{ route('admin.products.update', $product) }}" method="POST" class="space-y-5">
                         @csrf
                         @method('PATCH')
-                        <x-admin.products.form title="Update" button="Update" :product="$product"/>
+                        <x-admin.product.form title="Update" button="Update" :product="$product"/>
                     </form>
                 </div>
 
@@ -68,7 +68,7 @@
                     <!-- Add image -->
                     <form action="{{ route('products.images.store', $product) }}" method="POST" enctype="multipart/form-data" class="mb-6 rounded-xl border border-dashed border-gray-700 bg-gray-950 p-5">
                         @csrf
-                        <x-admin.products.image-form :product="$product"/>
+                        <x-admin.product.image-form :product="$product"/>
                     </form>
 
 
@@ -82,7 +82,7 @@
                                 <!-- Delete -->
                                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 pt-8">
                                     <div x-data="{ confirmDelete: false }">
-                                        <x-admin.products.image-delete :image="$image"/>
+                                        <x-admin.product.modal-image-delete :image="$image"/>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Footer -->
             <div class="flex justify-end border-t border-gray-800 px-8 py-5">

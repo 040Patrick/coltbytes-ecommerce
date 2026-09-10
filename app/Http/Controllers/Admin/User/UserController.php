@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::with(['roles', 'orders'])->get();
 
-        return view('admin.users.index', ['title' => 'Admin users', 'users' => $users, 'roles' => Role::all()]);
+        return view('admin.user.index', ['title' => 'Admin users', 'users' => $users, 'roles' => Role::all()]);
     }
 
     /**
