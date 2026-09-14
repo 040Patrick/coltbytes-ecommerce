@@ -10,11 +10,24 @@ use App\Models\Country;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
+use Override;
 
-class AddressController extends Controller
+class AddressController extends Controller implements HasMiddleware
 {
     use AuthorizesRequests;
+
+    /**
+     * HasMiddleware
+     */
+    public static function middleware()
+    {
+        return [
+            new Middleware('throttle:5', ['store', 'update',]),
+        ];
+    }
     /**
      * Update the specified resource in storage.
      */

@@ -8,11 +8,23 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
     use AuthorizesRequests;
+
+    /**
+     * HasMiddleware
+     */
+    public static function middleware()
+    {
+        return [
+            new Middleware('throttle:3', ['update']),
+        ];
+    }
 
     /**
      * Show the form for editing the specified user.

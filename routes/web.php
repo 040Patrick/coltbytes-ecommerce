@@ -22,7 +22,6 @@ use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route; 
 
-
 /**
  * GLOBAL ROUTES
  */
@@ -75,7 +74,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/products', ProductController::class)->only('show');
 
         /**
-     * Admin Group
+        * Admin
          */
         Route::middleware('admin')->prefix('admin')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');

@@ -9,9 +9,21 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Override;
 
-class RegisterController extends Controller
+class RegisterController extends Controller implements HasMiddleware
 {
+    /**
+     * HasMiddleware
+     */
+    public static function middleware()
+    {
+        return [
+            new Middleware('throttle:3', ['store']),
+        ];
+    }
     /**
      * Return register user view
      */

@@ -7,12 +7,25 @@ use App\Http\Requests\Phone\UpdatePhoneRequest;
 use App\Models\Phone;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class PhoneController extends Controller
+class PhoneController extends Controller implements HasMiddleware
 {
     use AuthorizesRequests;
+
+    /**
+     * HasMiddleware
+     */
+    public static function middleware()
+    {
+        return [
+            new Middleware('throttle:3', ['store', 'update']),
+        ];
+    }
+
     /**
      * Phone index
      */

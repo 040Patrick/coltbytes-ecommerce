@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     use AuthorizesRequests;
+    
     /**
      * Return admin product index
      */

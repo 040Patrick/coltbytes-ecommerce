@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
 {
-    /** 
+    /**
      * Return contact view
      */
     public function index(): View

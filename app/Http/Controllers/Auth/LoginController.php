@@ -6,11 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Login\StoreLoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class LoginController extends Controller
+class LoginController extends Controller implements HasMiddleware
 {
+    /**
+    * HasMiddleware
+    */
+    public static function middleware()
+    {
+        return [
+            new Middleware('throttle:3', ['login']),
+        ];
+    }
+
     /**
      * @return view login view
      */
