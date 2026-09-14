@@ -7,7 +7,7 @@
             <strong class="text-black">Orders:</strong>
         </p>
 
-        <button type="button" @click="status = true">
+        <button type="button" @click="status = true" class="rounded p-1 hover:bg-amber-300">
             <x-icons.dropdown />
         </button>
     </div>

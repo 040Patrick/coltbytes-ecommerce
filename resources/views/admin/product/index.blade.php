@@ -12,34 +12,34 @@
             <div class="px-10 py-10">
 
                 <h1 class="text-4xl font-bold text-white">
-                    Admin Panel
+                    Admin Painel
                 </h1>
 
                 <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
 
                 <p class="mt-2 text-gray-500  mb-2">
-                    Manage your store and application.
+                    Manage or create products.
                 </p>
         
                 <!-- Create product -->
-                <div x-data="{add : false }">
-
-                    <button type="button" @click="add = true" x-show="!add" class="bg-amber-400 mt-5 p-3 px-10 text-black hover:bg-amber-300 rounded-full text-center font-bold"> 
+                <div x-data="{ add: false }" class="flex justify-center">
+                    <button type="button" @click="add = true" class="mt-5 rounded bg-amber-400 p-4 px-10 text-center font-bold text-black hover:bg-amber-300">
                         Create new Product
                     </button>
 
                     <!-- Form -->
-                    <div x-show="add" class="mt-5 border border-gray-800 bg-gray-950 p-8 shadow-xl">
+                    <div x-show="add" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70" @click.self="add = false">
+                        <div class="relative w-full max-w-2xl bg-black p-10 rounded-2xl">
+                            <form action="{{ route('admin.products.store') }}" method="post">
+                                @csrf
+                                <x-admin.product.form title="Create" button="Create"/>
+                            </form>
 
-                        <form action="{{ route('admin.products.store') }}" method="post" class="rounded">
-                            @csrf 
-                            <x-admin.product.form title="Create" button="Create"/>      
-                        </form>
-                        
-                        <!-- Close create form -->
-                        <button @click="add = false" type="button" class="bg-red-500 hover:bg-red-400 w-full p-3 text-black rounded text-center font-bold"> 
-                            Close
-                        </button>
+                            <!-- Close create form -->
+                            <button @click="add = false" type="button" class="absolute right-4 top-4 rounded bg-red-500 p-2 px-4 font-bold text-black hover:bg-red-400">
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
 

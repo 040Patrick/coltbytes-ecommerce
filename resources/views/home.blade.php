@@ -3,17 +3,6 @@
         @section('content')
             <div class="mx-30 mt-20">
                 <section>
-                    <!-- Search Bar -->
-                    <div class="rounded-xl border border-black/30 bg-black p-2">
-                        <form action="{{ route('home') }}" method="GET" class="flex gap-2">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search products..." class="w-full bg-white rounded-lg border border-black/20 px-4 py-2 outline-none focus:border-amber-400">
-
-                            <button type="submit" class="rounded-lg bg-amber-400 px-6 py-2 font-bold text-black hover:bg-amber-300">
-                                Search
-                            </button>
-                        </form>
-                    </div>
-
                     <!-- Products -->
                     <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         @forelse ($products as $product)
