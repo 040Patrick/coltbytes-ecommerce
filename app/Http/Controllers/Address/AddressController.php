@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Address;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Address\StoreAddressRequest;
 use App\Http\Requests\Address\UpdateAddressRequest;
-use App\Models\Addresses;
-use App\Models\Countries;
+use App\Models\Address;
+use App\Models\Country;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -17,18 +18,19 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function index(Addresses $address)
+    public function index(): View
     {
         $user = Auth::user()->load(['addresses.country']);
 
-        $countries = Countries::all();
+        $countries = Country::all();
+
         return view('adresses.index', ['title' => 'Adresses', 'addresses' => $user->addresses,'countries' => $countries]);
     }
 
     /**
      * Store a new address
      */
-    public function store(StoreAddressRequest $request)
+    public function store(StoreAddressRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
@@ -40,7 +42,7 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAddressRequest $request, Addresses $address)
+    public function update(UpdateAddressRequest $request, Address $address): RedirectResponse
     {
         $this->authorize('update', $address);
 
@@ -54,7 +56,7 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Addresses $address): RedirectResponse
+    public function destroy(Address $address): RedirectResponse
     {
         $this->authorize('delete', $address);
 

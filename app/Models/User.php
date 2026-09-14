@@ -60,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @Relations
+     * Relations
      */
     public function roles(): BelongsToMany
     {
@@ -79,7 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function addresses(): HasMany
     {
-        return $this->hasMany(Addresses::class);
+        return $this->hasMany(Address::class);
     }
 
     public function products(): HasMany

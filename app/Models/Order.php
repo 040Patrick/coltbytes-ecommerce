@@ -19,7 +19,7 @@ class Order extends Model
     ];
 
     /**
-     * @Relations 
+     * Relations 
      */
     public function user(): BelongsTo
     {

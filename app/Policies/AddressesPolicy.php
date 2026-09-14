@@ -1,8 +1,8 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Policies;
 
-use App\Models\Addresses;
+use App\Models\Address;
 use App\Models\User;
 
 class AddressesPolicy
@@ -10,7 +10,7 @@ class AddressesPolicy
     /**
      * Update address if user.id === addresses.user_id
      */
-    public function update(User $user, Addresses $addresses)
+    public function update(User $user, Address $addresses)
     {
         return $user->id === $addresses->user_id;
     }
@@ -19,7 +19,7 @@ class AddressesPolicy
      * Delete address if user.id === addresses.user_id;
      */
 
-    public function delete(User $user, Addresses $addresses)
+    public function delete(User $user, Address $addresses)
     {
         return $user->id === $addresses->user_id;
     }

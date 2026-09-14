@@ -1,10 +1,10 @@
 <?php
-
+declare(strict_types=1);
 namespace Database\Seeders;
 
-use App\Models\Addresses;
-use App\Models\Adresses;
-use App\Models\Countries;
+
+use App\Models\Address;
+use App\Models\Country;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
     {   
         $this->call([
             RoleSeeder::class,
-            CountriesSeeder::class,
-            CategoriesSeeder::class
+            CountrySeeder::class,
+            CategorySeeder::class
         ]);
 
         $users = User::factory(25)->create();
@@ -51,12 +51,12 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        $countries = Countries::all();
+        $countries = Country::all();
         /**
          * Make a address for each user
          */
         $users->each(function ($user) use($countries) {
-            Addresses::factory(1)->create([
+            Address::factory(1)->create([
                 'user_id' => $user->id,
                 'country_id' => $countries->random()->id
             ]);

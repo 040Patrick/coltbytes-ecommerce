@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Addresses extends Model
+class Address extends Model
 {
-    /** @use HasFactory<\Database\Factories\AddressesFactory> */
+    /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -24,11 +24,11 @@ class Addresses extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function country(): BelongsTo
     {
-        return $this->belongsTo(Countries::class);
+        return $this->belongsTo(Country::class);
     }
 
     public function user(): BelongsTo

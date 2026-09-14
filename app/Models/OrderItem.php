@@ -19,7 +19,7 @@ class OrderItem extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function order(): BelongsTo
     {

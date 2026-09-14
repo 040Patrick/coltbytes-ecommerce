@@ -1,11 +1,11 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 bg-black rounded-2xl">
+    <div class="mt-30 mx-30 bg-black rounded-2xl mb-30">
 
         <!-- Return button -->
         <div class="flex">
-            <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300text-black text-center font-bold rounded">
+            <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded">
                 Back
             </a>
         </div>
@@ -31,15 +31,16 @@
             @endsession
             
             <!-- Show orders -->
-            <div class="flex flex-col gap-5 m-5 font-bold">
+            <div class="flex flex-col gap-4 m-4 rounded font-bold">
                 @forelse($orders as $order)
 
-                    <div class="w-full rounded border-2 bg-gray-100 p-5">
+                    <div class="w-full border-2 bg-gray-100 p-5">
 
                         <div class="flex items-center justify-between">
                             <p class="rounded-2xl bg-black p-1 px-3 text-white">
                                 Order #{{ $order->id }}
                             </p>
+                            
                             <p class="font-bold text-amber-500">
                                 Status: {{ $order->status }}
 

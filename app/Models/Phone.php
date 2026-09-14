@@ -16,7 +16,7 @@ class Phone extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function user(): BelongsTo
     {

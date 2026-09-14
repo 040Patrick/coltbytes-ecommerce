@@ -27,8 +27,6 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order): RedirectResponse
     {
-        $this->authorize('admin', $order);
-
         $data = $request->validated();
 
         $order->update($data);

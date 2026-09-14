@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Product\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Address\AddressController;
+use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\User\UserController as AdminUserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -89,6 +90,9 @@ Route::middleware('auth')->group(function () {
             Route::resource('/users', AdminUserController::class)->names('admin.users');
             // Role 
             Route::resource('/Role', OrderController::class);
+            // Category
+            Route::resource('/category', CategoryController::class)->only('store', 'destroy');
+            Route::post('/product/{product}/categories', [CategoryController::class, 'sync'])->name('products.categories.sync');
         });
     });
 

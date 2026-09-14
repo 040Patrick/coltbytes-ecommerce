@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product', 'categories' => null])
 <!-- Tailwind and alpine made by AI -->
 <div x-data="{ updateProduct: false }">
     <!-- Open modal -->
@@ -51,9 +51,8 @@
                     </form>
                 </div>
 
-
                 <!-- Images -->
-                <div class="rounded-xl border border-gray-800 bg-gray-900 p-6">
+                <div class="rounded-xl w-full border border-gray-800 bg-gray-900 p-6">
 
                     <div class="mb-6">
                         <h3 class="text-lg font-bold text-white">
@@ -104,6 +103,23 @@
                         @endforelse
                     </div>
                 </div>
+            </div>
+
+            <!-- Category -->
+            <div class="rounded-xl mx-20 mb-5 border border-gray-800 bg-gray-900 p-6">
+                <div class="mb-6">
+                    <h3 class="text-lg text-center font-bold text-white">
+                        Categories
+                    </h3>
+
+                    <p class="text-sm text-gray-400 text-center">
+                        Create or update category details.
+                    </p>
+                </div>
+
+                
+                <x-admin.category.category :product="$product" :categories="$categories"/>
+                
             </div>
 
             <!-- Footer -->

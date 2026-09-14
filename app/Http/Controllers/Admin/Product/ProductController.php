@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        return view('admin.product.index', ['title' => 'Admin Products','products' => Product::all()]);
+        return view('admin.product.index', ['title' => 'Admin Products','products' => Product::all(), 'categories' => Category::all()]);
     }
 
     /**

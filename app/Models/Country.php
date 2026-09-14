@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Countries extends Model
+class Country extends Model
 {
     /** @use HasFactory<\Database\Factories\CountriesFactory> */
     use HasFactory;
@@ -17,10 +17,10 @@ class Countries extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function addresses(): HasMany
     {
-        return $this->hasMany(Addresses::class);
+        return $this->hasMany(Address::class);
     }
 }

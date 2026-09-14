@@ -17,7 +17,7 @@ class Profile extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function user(): BelongsTo
     {

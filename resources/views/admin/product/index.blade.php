@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 bg-black rounded-2xl">
+    <div class="mt-30 mx-30 bg-black rounded-2xl mb-30">
         <!-- Return button -->
         <div class="flex justify-begin">
             <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded"> Back </a>
@@ -24,7 +24,7 @@
                 <!-- Create product -->
                 <div x-data="{add : false }">
 
-                    <button type="button" @click="add = true" x-show="!add" class="bg-amber-400 mt-5 p-3 px-10 text-black hover:bg-amber-300 rounded text-center font-bold"> 
+                    <button type="button" @click="add = true" x-show="!add" class="bg-amber-400 mt-5 p-3 px-10 text-black hover:bg-amber-300 rounded-full text-center font-bold"> 
                         Create new Product
                     </button>
 
@@ -54,9 +54,13 @@
                 <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('product') }}</div>
             @endsession
 
+            @session('category')
+                <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('category') }}</div>
+            @endsession
+
             <!-- Products -->
             @forelse($products as $product)
-                <div class="m-5 flex flex-row items-center gap-4 rounded bg-white px-10 py-5">
+                <div class="m-4 flex flex-row items-center gap-4 rounded bg-white px-10 py-5">
                     <p class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-xl font-bold text-white">
                         {{ $product->id }}
                     </p>
@@ -73,7 +77,7 @@
 
                     <!-- Update -->
                     <div x-data="{ updateProduct: false }" class="flex items-center gap-3">
-                        <x-admin.product.product-update :product="$product"/>
+                        <x-admin.product.product-update :product="$product" :categories="$categories"/>
                     </div>
 
                     <!-- Delete product -->

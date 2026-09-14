@@ -1,14 +1,14 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 bg-black rounded-2xl">
+    <div class="mt-30 mx-30 bg-black rounded-2xl mb-30">
         <!-- Return button -->
         <div class="flex">
             <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300text-black text-center font-bold rounded">
                 Back
             </a>
         </div>
-        <section class="py-5 m-5">
+        <section class="py-5 m-4">
             <!-- Header -->
             <div class="px-10 py-10">
                 <h1 class="text-4xl font-bold text-white">
@@ -30,9 +30,9 @@
 
             <!-- Users -->
             @foreach($users as $user)
-                <div class="m-5">
+                <div class="py-2">
                     
-                    <div class="flex flex-col gap-5 bg-white rounded py-10">
+                    <div class="flex flex-col gap-4 mx-2 bg-white rounded py-5">
 
                         <p class="text-blue-700 px-10 font-bold"><strong class="text-black">User: </strong> {{ $user->fullName }}</p>
                         <!-- EMAIL -->

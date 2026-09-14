@@ -17,7 +17,7 @@ class Role extends Model
     ];
 
     /**
-     * @Relations
+     * Relations
      */
     public function users(): BelongsToMany
     {
