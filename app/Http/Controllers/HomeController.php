@@ -13,11 +13,10 @@ class HomeController extends Controller
      */
     public function index(Request $request): View
     {
-        $products =  Product::query()->when($request->search, function ($query, $search) {
+        $products =  (new Product())->filter($request)->when($request->search, function ($query, $search) {
             $query->where('name', 'like', "%{$search}%");
         })->with('images')->paginate(10);
             
-    
         return view('home', ['title' => 'Home', 'products' => $products,]);
     }
 }  

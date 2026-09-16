@@ -29,7 +29,7 @@
 
                     <!-- Form -->
                     <div x-show="add" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70" @click.self="add = false">
-                        <div class="relative w-full max-w-2xl bg-black p-10 rounded-2xl">
+                        <div class="relative w-full max-w-2xl bg-gray-950 p-10 rounded-2xl">
                             <form action="{{ route('admin.products.store') }}" method="post">
                                 @csrf
                                 <x-admin.product.form title="Create" button="Create"/>

@@ -44,11 +44,11 @@
                     <div class="mt-2 h-1 w-12 rounded-full bg-amber-400"></div>
                 </div>
 
-                <form action="{{ route('products.categories.sync', $product) }}" method="post">
+                <form action="{{ route('products.categories.sync', $product) }}" method="post" class="h-96 overflow-y-auto">
                     @csrf
 
                     @foreach($categories as $category)
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col items-center gap-3 border m-2 border-gray-700 rounded-xl p-2">
                             <label for="categories" class="font-bold text-gray-200">{{ $category->name }}</label>
                             <input type="checkbox" name="categories[]" value="{{ $category->id }}" class="rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-white outline-none transition placeholder:text-gray-500 focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
                             @checked($product->categories->contains($category->id))>
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <button type="button" @click="addCategory = false" class="w-full rounded-xl bg-red-500 mt-6 px-8 py-3 font-bold text-black transition hover:bg-amber-400">
+        <button type="button" @click="addCategory = false" class="w-full rounded-xl bg-red-500 mt-6 px-8 py-3 font-bold text-black transition hover:bg-red-400">
             Close
         </button>
     </div>
