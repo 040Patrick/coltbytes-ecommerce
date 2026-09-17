@@ -18,6 +18,8 @@
                 </button>
             </form>
         </div>
+
+        <x-product.modal-filter />
     </div>
 
     <!-- Right -->

@@ -59,7 +59,7 @@ class Product extends Model
         if($OperatorFilter['arrayIn'])
         {
             foreach($OperatorFilter['arrayIn'] as $filter)
-            {
+            { 
                 $query->where(...$filter);
             }
         }
