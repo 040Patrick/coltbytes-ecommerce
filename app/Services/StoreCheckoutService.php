@@ -7,7 +7,7 @@ use App\Http\Requests\Checkout\StoreCheckoutRequest;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 
-class StoreCheckout implements StoreCheckoutServiceInterface
+class StoreCheckoutService implements StoreCheckoutServiceInterface
 {
     
     public function store(StoreCheckoutRequest $request, Product $product)

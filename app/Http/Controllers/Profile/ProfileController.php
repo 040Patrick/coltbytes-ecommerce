@@ -20,7 +20,7 @@ class ProfileController extends Controller implements HasMiddleware
     /**
      * Provider bind resolved
      */
-    public function __construct(public ProfileServiceInterface $profile){ }
+    public function __construct(private ProfileServiceInterface $profile){ }
 
     /**
      * Has Middleware

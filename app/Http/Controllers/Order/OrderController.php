@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * Return user Orders view
+     */
     public function index(): View
     {
         $orders = Auth::user()->orders()->with('orderItems')->get();

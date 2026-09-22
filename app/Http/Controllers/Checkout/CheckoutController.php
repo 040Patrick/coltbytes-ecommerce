@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace App\Http\Controllers\Checkout;
 
+use App\Contracts\StoreCheckoutServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Checkout\StoreCheckoutRequest;
 use App\Models\Order;
@@ -12,6 +13,11 @@ use Illuminate\View\View;
 
 class CheckoutController extends Controller
 {
+    /**
+     * StoreCheckoutService Resolved 
+     */
+    public function __construct(private StoreCheckoutServiceInterface $checkout) { }
+
     public function store(StoreCheckoutRequest $request, Product $product): RedirectResponse
     {
         $data = $request->validated();
