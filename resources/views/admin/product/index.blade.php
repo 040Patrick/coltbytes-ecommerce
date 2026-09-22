@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 bg-black rounded-2xl mb-30">
+    <div class="mt-30 mx-30 bg-gray-950 rounded-2xl mb-30">
         <!-- Return button -->
         <div class="flex justify-begin">
             <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded"> Back </a>
@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Form -->
-                    <div x-show="add" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70" @click.self="add = false">
+                    <div x-show="add" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70" @click.self="add = false">
                         <div class="relative w-full max-w-2xl bg-gray-950 p-10 rounded-2xl">
                             <form action="{{ route('admin.products.store') }}" method="post">
                                 @csrf
@@ -61,7 +61,7 @@
             <!-- Products -->
             @forelse($products as $product)
                 <div class="m-4 flex flex-row items-center gap-4 rounded bg-white px-10 py-5">
-                    <p class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-xl font-bold text-white">
+                    <p class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-950 text-xl font-bold text-white">
                         {{ $product->id }}
                     </p>
 

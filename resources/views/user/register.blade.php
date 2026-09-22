@@ -1,8 +1,8 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
-        <div class="w-full max-w-xl rounded-lg bg-black px-10 py-12">
+    <div class="mx-30 mb-30 mt-20 bg-amber-10 flex items-center justify-center px-6 py-16">
+        <div class="w-full max-w-xl rounded-lg bg-gray-950 px-10 py-12">
             <!-- Page header -->
             <div class="mb-10">
                 <h1 class="text-5xl font-bold text-white">
@@ -17,7 +17,7 @@
             </div>
 
             <!-- Form -->
-            <form action="{{ route('register.store') }}" method="POST" class="space-y-5" >
+            <form action="{{ route('register.store') }}" method="POST">
                 @csrf
                 @method('POST')
                 <!-- First name -->

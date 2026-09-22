@@ -9,13 +9,10 @@ use Illuminate\Contracts\View\View;
 class ProductController extends Controller
 {
     /**
-     * Show product
+     * Show an specific product
      */
     public function show(Product $product): View
     {
-        return view('products.show', [
-            'title' => 'product',
-            'product' => $product
-        ]);
+        return view('product.show', ['title' => 'Product', 'product' => $product]);
     }
 }

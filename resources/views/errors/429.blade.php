@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="min-h-screen bg-amber-50 flex items-center justify-center px-10">
-        <section class="bg-black text-white rounded-2xl px-10 py-16 md:px-20 text-center max-w-2xl w-full">
+        <section class="bg-gray-950 text-white rounded-2xl px-10 py-16 md:px-20 text-center max-w-2xl w-full">
             <p class="text-white font-bold text-lg mb-4">ERROR</p>
 
             <h1 class="text-5xl text-amber-400 md:text-5xl font-black tracking-tight">

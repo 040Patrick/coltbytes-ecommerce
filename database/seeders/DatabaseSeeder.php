@@ -89,11 +89,14 @@ class DatabaseSeeder extends Seeder
          * Create 5 order for each user 
          */
         $users->each(function ($user) {
-            $orders = Order::factory(2)->create([
-                'user_id' => $user->id
-            ]);
 
+            $address = $user->addresses()->firstOrFail();
             $products = Product::all();
+
+            $orders = Order::factory(2)->create([
+                'user_id' => $user->id,
+                'address_id' => $address->id
+            ]);
 
             $orders->each(function ($order, $key) use ($user, $products) {
                 OrderItem::factory(random_int(1, 3))->create([

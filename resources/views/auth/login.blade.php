@@ -3,7 +3,7 @@
 @section('content')
 <!-- Login page(made by ia) -->
     <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
-        <div class="w-full max-w-xl rounded-lg bg-black px-10 py-12">
+        <div class="w-full max-w-xl rounded-lg bg-gray-950 px-10 py-12">
 
             <!-- Page header -->
             <div class="mb-10">
@@ -26,7 +26,7 @@
             @enderror
 
             <!-- Form -->
-            <form action="{{ route('login.store') }}" method="POST"class="space-y-6">
+            <form action="{{ route('login.store') }}" method="POST">
                 @csrf
                 <!-- Email -->
                 <div>
@@ -79,7 +79,7 @@
                 </div>
 
                 <!-- Submit -->
-                <button type="submit" class="w-full rounded-lg bg-amber-400 px-7 py-3 font-bold text-black transition hover:bg-amber-300">
+                <button type="submit" class="w-full rounded-lg mt-2 bg-amber-400 px-7 py-3 font-bold text-black transition hover:bg-amber-300">
                     Login
                 </button>
             </form>

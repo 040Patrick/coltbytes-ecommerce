@@ -11,7 +11,7 @@
         </button>
 
         <!-- Modal -->
-        <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+        <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70 px-4">
 
             <!-- Modal content -->
             <div class="w-full max-w-md rounded-xl bg-gray-950 p-8 text-center shadow-2xl">

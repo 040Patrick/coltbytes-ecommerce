@@ -9,7 +9,7 @@
     <div x-show="add" class="text-black text-center p-2 mt-2 w-full rounded font-bold">
         <div class="w-full h-px bg-white/20 my-5"></div>
 
-        <div class="bg-black rounded-2xl">
+        <div class="bg-gray-950 rounded-2xl">
             <div class="mt-10">
 
                 <!-- Title -->
@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- Form -->
-                <form action="{{ route('addresses.update', $address) }}" method="post" class="bg-black px-5 flex flex-col">
+                <form action="{{ route('addresses.update', $address) }}" method="post" class="bg-gray-950 px-5 flex flex-col">
                     @csrf 
                     @method('patch')
                         

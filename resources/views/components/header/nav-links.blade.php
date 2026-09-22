@@ -1,4 +1,4 @@
-<nav class="grid grid-cols-3 w-full bg-black px-10 py-8 gap-5 font-bold">
+<nav class="grid grid-cols-3 w-full bg-gray-950 px-10 py-8 gap-5 font-bold">
 
     <!-- Left -->
     <div class="flex items-center justify-start">
@@ -7,21 +7,24 @@
         </a>
     </div>
 
-    <!-- Center -->
-    <div class="flex items-center justify-center">
-        <!-- Search bar -->
-        <div class="rounded-xl border border-black/30 bg-black p-2">
-            <form action="{{ route('home') }}" method="GET" class="flex gap-2">
-                <input type="text" name="search" value="{{ request('search') }}"  placeholder="Search products..."  class="max-w-2xl rounded-lg border border-black/20 bg-white px-4 py-2 outline-none focus:border-amber-400">
-                <button type="submit" class="rounded-lg bg-amber-400 px-6 py-2 font-bold text-black hover:bg-amber-300">
-                    Search
-                </button>
-            </form>
+        <!-- Center -->
+        <div class="flex items-center justify-center">
+            <!-- Search bar -->
+            <div class="rounded-xl border border-black/30 bg-gray-950 p-2">
+                <form action="{{ route('home') }}" method="GET" class="flex gap-2">
+                    <input type="text" name="search" value="{{ request('search') }}"  placeholder="Search products..."  class="max-w-2xl rounded-lg border border-black/20 bg-white px-4 py-2 outline-none focus:border-amber-400">
+                    <button type="submit" class="rounded-lg bg-amber-400 px-6 py-2 font-bold text-black hover:bg-amber-300">
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            <!-- Filter Button -->
+            @if(request()->routeIs('home'))
+                <x-product.modal-filter />
+            @endif
         </div>
-
-        <x-product.modal-filter />
-    </div>
-
+    
     <!-- Right -->
     <div class="flex items-center justify-end gap-2">
         @if(auth()->user()?->hasRole(['admin']))

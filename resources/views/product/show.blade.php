@@ -1,16 +1,20 @@
 @extends('layout.layout')
 
 @section('content')
-    <!-- FRONT-END WAS MADE BY AI -->
-    <div class="mx-30 mt-20">
+    <div class="mx-30 mb-15 mt-20"> <!-- FRONT-END MADE BY AI -->
 
-        <!-- Back to Shop -->
+        <!-- Return button -->
         <a href="{{ route('home') }}" class="mb-8 inline-block rounded bg-amber-400 p-3 text-sm font-bold text-black hover:bg-amber-300">
             ← Back to Shop
         </a>
 
+        <!-- Error message --> 
+        @error('address_id')
+            <p class="mt-2 text-sm font-medium text-red-500">{{ $message }}</p>
+        @enderror
+        
         <!-- Product -->
-        <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black shadow-xl">
+        <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-950 shadow-xl">
             <!-- Product Images -->
             <div x-data="{ current: 0, total: {{ $product->images->count() }}}" class="relative bg-gray-100">
 
@@ -27,17 +31,17 @@
 
                 @if($product->images->count() > 1)
                     <!-- Previous -->
-                    <button type="button" @click="current = current === 0 ? total - 1 : current - 1" class="absolute left-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-black/80">
+                    <button type="button" @click="current = current === 0 ? total - 1 : current - 1" class="absolute left-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-950/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-gray-950/80">
                         ‹
                     </button>
 
                     <!-- Next -->
-                    <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-black/80">
+                    <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-950/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-gray-950/80">
                         ›
                     </button>
 
                     <!-- Counter -->
-                    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm font-bold text-white">
+                    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-gray-950/70 px-4 py-2 text-sm font-bold text-white">
                         <span x-text="current + 1"></span>
                         /
                         <span x-text="total"></span>
@@ -70,17 +74,7 @@
                 </div>
 
                 <!-- Purchase -->
-                <form action="#" method="POST" class="mt-10 flex gap-3">
-                    @csrf
-
-                    <input type="hidden" name="product_id" value="{{ $product->id }}" >
-
-                    <input type="number" name="quantity" min="1" value="1" class="w-24 rounded-xl border border-white/10 bg-white px-4 py-3 text-center font-bold text-black outline-none focus:border-amber-400">
-
-                    <button  type="submit" class="flex-1 rounded-xl bg-amber-400 px-6 py-3 font-bold text-black transition hover:bg-amber-300">
-                        Buy Now
-                    </button>
-                </form>
+                <x-checkout.modal-checkout :product="$product"/>
 
                 <!-- Additional Information -->
                 <div class="mt-10 space-y-3 border-t border-white/10 pt-6 text-sm">
@@ -113,7 +107,6 @@
                 </div>
 
             </div>
-
         </section>
     </div>
 @endsection

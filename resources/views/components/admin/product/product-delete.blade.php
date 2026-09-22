@@ -10,7 +10,7 @@
     </button>
 
     <!-- Show delete  -->
-    <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+    <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/60">
         <div class="w-full max-w-md rounded-xl bg-gray-950 p-8 shadow-xl">
 
             <h2 class="text-xl font-bold text-white">Delete Product?</h2>

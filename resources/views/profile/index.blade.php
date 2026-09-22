@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- Profile page(MADE BY IA) -->
-    <div class="min-h-screen mt-30 py-14 px-6">
-        <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl">
+    <div class="mx-30 mb-30 mt-20 bg-amber-10 flex items-center justify-center px-6 py-16">
+        <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl bg-gray-950 shadow-2xl">
 
             <div class="py-5 flex justify-center px-10 ">
                 @session('updated')
@@ -29,7 +29,7 @@
                         <form action="{{ route('profile.destroy', $profile) }}" method="post">
                             @csrf 
                             @method('delete')
-                            <button type="submit" onclick="return confirm('Are you sure you want to delete your avatar?')" class="flex h-8 w-8 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-red-600" title="Delete avatar">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete your avatar?')" class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-950/70 text-white transition hover:bg-red-600" title="Delete avatar">
                             <x-icons.trash-can />
                         </form>
                     </div>

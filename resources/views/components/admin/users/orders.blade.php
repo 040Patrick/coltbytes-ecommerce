@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/50">
 
         <div class="flex max-h-[80vh] flex-col gap-5 overflow-y-auto rounded-lg bg-white p-6 shadow-lg">
 

@@ -7,7 +7,7 @@
     </button>
 
     <!-- Modal -->
-    <div x-show="updateProduct" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6">
+    <div x-show="updateProduct" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70 p-6">
         <!-- Modal container -->
         <div @click.outside="updateProduct = false" class="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-gray-950 shadow-2xl">
 

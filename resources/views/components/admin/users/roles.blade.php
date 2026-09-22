@@ -9,7 +9,7 @@
     </div>
 
     <!-- Modal -->
-    <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+    <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/60 px-4">
 
         <div class="w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 shadow-2xl">
 

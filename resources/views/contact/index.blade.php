@@ -2,8 +2,8 @@
 
 @section('content')
     <!-- Contact form(made by IA) -->
-    <div class="min-h-screen flex items-center justify-center">
-        <section class="w-full max-w-4xl bg-black text-white rounded-2xl px-10 py-10 shadow-xl">
+    <div class="mx-30 mb-30 mt-20 bg-amber-10 flex items-center justify-center px-6 py-16">
+        <section class="w-full max-w-4xl bg-gray-950 text-white rounded-2xl px-10 py-10 shadow-xl">
     
             <!-- Success Message -->
             <div class="p-5">
@@ -11,7 +11,7 @@
                     <div class="bg-green-600 text-white font-bold p-2 rounded text-center"> {{ session('contact')}} </div>
                 @endsession
             </div>
-            <!-- Page name -->
+            <!-- Title -->
             <div class="mb-10">
                 <h1 class="text-5xl font-bold">
                     Contact Us

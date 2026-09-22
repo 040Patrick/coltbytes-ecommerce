@@ -50,7 +50,7 @@
         <label for="stock" class="mb-2 block text-sm font-semibold text-gray-200">Stock</label>
         <input id="stock" type="number" name="stock" value="{{ old('stock', $product?->stock) }}" placeholder="0" min="0" class="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-white placeholder-gray-500 outline-none transition focus:border-amber-400 focus:ring-1 focus:ring-amber-400 @error('stock') border-red-500 @enderror">
         @error('stock')
-                <p class="mt-2 text-sm font-medium text-red-500">{{ $message }}</p>
+            <p class="mt-2 text-sm font-medium text-red-500">{{ $message }}</p>
         @enderror
     </div>
 

@@ -2,10 +2,11 @@
 
 @section('content')
     <!-- About page (made by IA) -->
-    <div class="min-h-screen bg-amber-10 flex items-center justify-center px-6 py-16">
+    <div class="mx-30 mb-30 mt-20 bg-amber-10 flex items-center justify-center px-6 py-16">
 
         <!-- Section -->
-        <section class="w-full max-w-4xl bg-black text-white rounded-2xl px-8 py-12 md:px-14 md:py-10 shadow-xl">
+
+        <section class="w-full max-w-4xl bg-gray-950 text-white rounded-2xl px-8 py-12 md:px-14 md:py-10 shadow-xl">
 
             <!-- Page name -->
             <div class="mb-10">

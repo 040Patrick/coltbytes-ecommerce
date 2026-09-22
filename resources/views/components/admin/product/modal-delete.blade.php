@@ -6,12 +6,12 @@
         @method('delete')
 
         <!-- Delete button -->
-        <button type="button" @click="confirmDelete = true" class="rounded bg-red-500 px-4 w-full py-3 font-bold text-black hover:bg-red-400">
+        <button type="button" @click="confirmDelete = true" class="rounded-lg bg-red-500 px-5 py-2.5 font-bold text-black transition hover:bg-red-400">
             Delete
         </button>
 
         <!-- Modal -->
-        <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+        <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70 px-4">
 
             <!-- Modal content -->
             <div class="w-full max-w-md rounded-xl bg-gray-950 p-8 text-center shadow-2xl">
@@ -29,7 +29,7 @@
                 </h2>
 
                 <p class="mt-3 text-gray-400">
-                    Are you sure you want to delete this product #{{ $product->id }}?
+                    Are you sure you want to delete product #{{ $product->id }}?
                     This action cannot be undone.
                 </p>
 

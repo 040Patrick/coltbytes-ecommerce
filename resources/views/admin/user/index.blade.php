@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 mb-30 rounded-2xl bg-black">
+    <div class="mt-30 mx-30 mb-30 rounded-2xl bg-gray-950">
         <!-- Return button -->
         <div class="flex">
             <a href="{{ route('admin.index') }}" class="mt-10 mx-10 rounded bg-amber-400 p-3 px-10 text-center font-bold text-black hover:bg-amber-300">

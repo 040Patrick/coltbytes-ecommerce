@@ -5,7 +5,7 @@
     <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
         <div class="w-full max-w-xl rounded-lg bg-black px-10 py-12 mb-5">
 
-            <!-- Page header -->
+            <!-- Title -->
             <div class="flex flex-col">
                 <div>
                     <h1 class="text-5xl font-bold text-white">

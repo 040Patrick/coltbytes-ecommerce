@@ -3,7 +3,7 @@ declare(strict_types=1);
 use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Order\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\Product\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Address\AddressController;
@@ -13,8 +13,10 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Phone\PhoneController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Profile\ProfileController;
@@ -30,6 +32,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('/contact', ContactController::class)->only('index', 'store');
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+// Products
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+
 
 /**
  * GUEST ROUTES
@@ -70,8 +75,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('/phone', PhoneController::class)->only('index', 'update', 'destroy', 'store');
         // Adresses
         Route::resource('/addresses', AddressController::class);
-        // Products
-        Route::resource('/products', ProductController::class)->only('show');
+        // User Order 
+        Route::get('/myOrders', [OrderController::class, 'index'])->name('user.order.index');
 
         /**
         * Admin
@@ -84,7 +89,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
             // Order
-            Route::resource('/order', OrderController::class);
+            Route::resource('/order', AdminOrderController::class);
             // User
             Route::resource('/users', AdminUserController::class)->names('admin.users');
             // Role 
@@ -94,6 +99,10 @@ Route::middleware('auth')->group(function () {
             Route::post('/product/{product}/categories', [CategoryController::class, 'sync'])->name('products.categories.sync');
         });
     });
+
+    Route::post('/checkout/{product}', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/cancel/{order}', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 
     // VERIFY EMAIL
     Route::controller(VerifyEmailController::class)->group(function () {

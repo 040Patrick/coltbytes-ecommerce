@@ -13,13 +13,13 @@
 
         @if($product->images->count() > 1)
             <!-- Previous -->
-            <button type="button" @click="current = current === 0 ? total - 1 : current - 1" class="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 px-4 py-3 text-xl font-bold text-white transition hover:bg-black/80">‹</button>
+            <button type="button" @click="current = current === 0 ? total - 1 : current - 1" class="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-gray-950/60 px-4 py-3 text-xl font-bold text-white transition hover:bg-gray-950/80">‹</button>
 
             <!-- Next -->
-            <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 px-4 py-3 text-xl font-bold text-white transition hover:bg-black/80">›</button>
+            <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-gray-950/60 px-4 py-3 text-xl font-bold text-white transition hover:bg-gray-950/80">›</button>
 
             <!-- Counter -->
-            <div class="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/70 px-4 py-1 text-sm font-semibold text-white">
+            <div class="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 rounded-full bg-gray-950/70 px-4 py-1 text-sm font-semibold text-white">
                 <span x-text="current + 1"></span> / <span x-text="total"></span>
             </div>
         @endif

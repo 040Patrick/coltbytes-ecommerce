@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center items-center p-20">
-        <div class="bg-black rounded p-15">
+        <div class="bg-gray-950 rounded p-15">
 
             <h2 class="text-center font-bold text-white text-2xl mb-5">
                 RESET PASSWORD

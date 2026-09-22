@@ -3,7 +3,7 @@
 @section('content')
     <div class="min-h-screen flex items-center justify-center px-10">
         <!-- Section -->
-        <section class="bg-black text-white rounded-2xl px-10 py-16 md:px-20 text-center max-w-2xl w-full">
+        <section class="bg-gray-950 text-white rounded-2xl px-10 py-16 md:px-20 text-center max-w-2xl w-full">
 
             <p class="text-amber-400 font-bold text-lg mb-4">
                 VERIFY YOUR EMAIL
