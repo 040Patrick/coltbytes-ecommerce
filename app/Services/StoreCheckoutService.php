@@ -5,19 +5,15 @@ namespace App\Services;
 use App\Contracts\StoreCheckoutServiceInterface;
 use App\Http\Requests\Checkout\StoreCheckoutRequest;
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCheckoutService implements StoreCheckoutServiceInterface
 {
-    
+    /**
+     * Checkout service store 
+     */
     public function store(StoreCheckoutRequest $request, Product $product)
     {
-
+        
     }
-
-    public function handle()
-    {
-
-    }
-    
 }

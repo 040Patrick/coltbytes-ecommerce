@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    /** @use HasFactory<\Database\Factories\OrderItemFactory> */
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [

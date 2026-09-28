@@ -58,7 +58,7 @@
                 </button>
 
                 <div x-show="open" x-cloak @click.outside="open = false" class="absolute right-0 mt-2 w-48 rounded-2xl bg-amber-400 p-3">
-                    <x-header.dropdown />
+                    <x-partials.dropdown />
                 </div>
             </div>
         @else

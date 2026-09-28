@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Checkout\CheckoutController;
+use App\Http\Controllers\Checkout\StripeWebhookController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Order\OrderController;
@@ -33,8 +34,9 @@ Route::resource('/contact', ContactController::class)->only('index', 'store');
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 // Products
-Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
-
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show'); 
+// Webhook
+Route::post('/stripe/webhooks', [StripeWebhookController::class, 'handle']);
 
 /**
  * GUEST ROUTES
@@ -56,7 +58,6 @@ Route::middleware('guest')->group(function () {
         Route::get('/reset-password/{token}', 'reset')->name('password.reset');
         Route::post('/reset-password', 'update')->name('password.update');
     });
-    
 }); 
     
 // AUTH ROUTES
@@ -100,10 +101,14 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::post('/checkout/{product}', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])->name('checkout.success');
-    Route::get('/checkout/cancel/{order}', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
-
+    // Checkout
+    Route::controller(CheckoutController::class)->prefix('checkout')->name('checkout.')->group(function () {
+        Route::get('{product}', 'index')->name('index');
+        Route::post('{product}', 'store')->name('store');
+        Route::get('success/{order}',  'success')->name('success');
+        Route::get('cancel/{product}/{order}', 'cancel')->name('cancel');
+    });
+    
     // VERIFY EMAIL
     Route::controller(VerifyEmailController::class)->group(function () {
         Route::get('/email-verify', 'notice')->name('verification.notice');

@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                    <a href="#" class="rounded-xl bg-amber-400 px-8 py-3 text-center font-bold text-black transition hover:bg-amber-300">
+                    <a href="{{ route('user.order.index') }}" class="rounded-xl bg-amber-400 px-8 py-3 text-center font-bold text-black transition hover:bg-amber-300">
                         View order
                     </a>
                     <a href="{{ route('home') }}" class="rounded-xl border border-zinc-700 px-8 py-3 text-center font-bold text-white transition hover:bg-zinc-900">

@@ -1,10 +1,10 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mx-30 mb-30 mt-20 flex items-center justify-center bg-amber-10 px-10 py-16">
+    <div class="mx-30 mb-30 mt-30 flex items-center justify-center bg-amber-10 px-20 py-16">
         <section class="w-full px-30">
             <!-- Products -->
-            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+            <div class=" grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4 ">
                 @forelse ($products as $product)
                     <a href="{{ route('product.show', $product) }}" class="group overflow-hidden rounded-xl border border-black/10 bg-gray-950 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
                         <!-- Product Image -->

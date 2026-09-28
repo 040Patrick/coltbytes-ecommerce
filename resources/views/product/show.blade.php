@@ -1,7 +1,8 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mx-30 mb-15 mt-20"> <!-- FRONT-END MADE BY AI -->
+    <!-- FRONT-END MADE BY AI -->
+    <div class="mx-30 mb-15 mt-20"> 
 
         <!-- Return button -->
         <a href="{{ route('home') }}" class="mb-8 inline-block rounded bg-amber-400 p-3 text-sm font-bold text-black hover:bg-amber-300">
@@ -17,7 +18,6 @@
         <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-950 shadow-xl">
             <!-- Product Images -->
             <div x-data="{ current: 0, total: {{ $product->images->count() }}}" class="relative bg-gray-100">
-
                 @forelse($product->images as $index => $image)
                     <div x-show="current === {{ $index }}" class="flex h-[600px] items-center justify-center p-10">
                         <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="max-h-full w-full object-contain">
@@ -27,7 +27,6 @@
                         No image available
                     </div>
                 @endforelse
-
 
                 @if($product->images->count() > 1)
                     <!-- Previous -->
@@ -62,10 +61,24 @@
                     ${{ number_format($product->price, 2) }}
                 </p>
 
+                <!-- Categories -->
+                <div class="mt-10 border-t border-white/10 pt-8">
+                    <h2 class="mb-4 text-xl font-bold text-white">
+                        Categories:
+                    </h2>
+                    <div class="grid justify-items-center grid-cols-5 gap-5">
+                        @foreach($product->categories as $category)
+                            <p class="bg-amber-400 rounded-full p-1 px-3 font-bold text-white-400">
+                                {{ $category->name }}
+                            </p>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Description -->
                 <div class="mt-10 border-t border-white/10 pt-8">
                     <h2 class="mb-4 text-xl font-bold text-white">
-                        Description
+                        Description:
                     </h2>
 
                     <p class="leading-7 text-gray-400">
@@ -73,10 +86,12 @@
                     </p>
                 </div>
 
-                <!-- Purchase -->
-                <x-checkout.modal-checkout :product="$product"/>
+                <!-- Buy -->
+                <a href="{{ route('checkout.index', $product) }}" class="block w-full my-10 rounded-xl bg-amber-400 px-6 py-3 text-center font-bold text-black transition hover:bg-amber-300">
+                    Buy
+                </a>
 
-                <!-- Additional Information -->
+                <!-- Information -->
                 <div class="mt-10 space-y-3 border-t border-white/10 pt-6 text-sm">
                     <div class="flex justify-between text-gray-400">
                         <span>Availability</span>

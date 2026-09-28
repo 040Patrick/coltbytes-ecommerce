@@ -23,6 +23,7 @@ class RegisterController extends Controller implements HasMiddleware
             new Middleware('throttle:3', ['store']),
         ];
     }
+    
     /**
      * Return register user view
      */

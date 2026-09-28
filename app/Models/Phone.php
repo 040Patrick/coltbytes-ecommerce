@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Phone extends Model
 {
+    /** @use HasFactory<\Database\Factories\OrderItemFactory> */
     use HasFactory;
 
     protected $fillable = [

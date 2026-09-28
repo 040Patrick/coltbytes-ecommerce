@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class Product extends Model
 {
+    /** @use HasFactory<\Database\Factories\OrderItemFactory> */
     use HasFactory;
 
     protected $fillable = [

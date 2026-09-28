@@ -28,7 +28,7 @@ class ProfileController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('throttle:profile', ['update']),
+            new Middleware('throttle:profile', ['update', 'destroy']),
         ];
     }
 
@@ -52,7 +52,7 @@ class ProfileController extends Controller implements HasMiddleware
     }
 
     /**
-     * DELETE PROFILE AVATAR
+     * Delete profile avatar
      */
     public function destroy(Profile $profile): RedirectResponse
     {

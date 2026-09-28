@@ -29,7 +29,6 @@ class ProductImageService implements ProductImageServiceInteraface
             }
         }
     }
-
     
     /**
      * Delete product avatar 

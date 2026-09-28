@@ -1,1 +1,1 @@
-<x-header.nav-links />
+<x-partials.navbar/>

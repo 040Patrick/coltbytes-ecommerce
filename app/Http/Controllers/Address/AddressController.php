@@ -13,7 +13,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
-use Override;
 
 class AddressController extends Controller implements HasMiddleware
 {
@@ -71,7 +70,11 @@ class AddressController extends Controller implements HasMiddleware
      */
     public function destroy(Address $address): RedirectResponse
     {
-        $this->authorize('delete', $address);
+        $this->authorize('update', $address);
+
+        if ($address->orders()->exists()) {
+            return back()->with('address', 'This address cannot be deleted because it is associated with an order.');
+        }
 
         $address->delete();
 

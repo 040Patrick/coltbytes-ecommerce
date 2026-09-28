@@ -78,36 +78,7 @@
                         </p>
                     </div>
                 @else 
-                    <!-- Create --> 
-                    <div x-data="{add: false}" >
-
-                        <button type="button" @click="add=true" x-show="!add" class="bg-amber-400 p-2 px-5 mt-5 rounded text-center font-bold w-full text-center">
-                            Add
-                        </button>
-
-                        <div x-show="add">
-                            <div class="bg-black rounded-2xl">
-                                <div class="mt-10">
-                                    <!-- Title -->
-                                    <div >
-                                        <h1 class="text-white font-bold text-2xl text-center py-5 underline">
-                                            Create
-                                        </h1>
-                                    </div>
-
-                                    <!-- Form -->
-                                    <form action="{{ route('addresses.store') }}" method="post" class="bg-black px-5 flex flex-col">
-                                        @csrf 
-                                        <x-address.form :countries="$countries" button="Add new Address"/>
-                                    </form>
-
-                                    <button type="button" @click="add = false" class="mt-4 font-black bg-red-600 hover:bg-red-500 w-full p-2 rounded cursor-pointer">
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                 @endif
             @endif

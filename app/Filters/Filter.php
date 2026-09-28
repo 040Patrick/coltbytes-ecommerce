@@ -19,7 +19,7 @@ abstract class Filter
 
         foreach($OperatorFilters as $field => $operators)
         {
-            if(!isset($field, $this->allowedOperators[$field]))
+            if(!isset($this->allowedOperators[$field]))
             {
                 throw new Exception("allowedOperators does not have {$field}");
             }

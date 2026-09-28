@@ -26,7 +26,7 @@ class StoreCheckoutRequest extends FormRequest
     {
         return [
             'address_id' => ['required', Rule::exists('addresses', 'id')->where('user_id', Auth::user()->id)],
-            'quantity' => ['required', 'integer', 'min:1']
+            'payment_method' => ['required', Rule::in(['mercadopago', 'stripe'])],
         ];
     }
 }
