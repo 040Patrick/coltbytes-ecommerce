@@ -1,27 +1,37 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mx-30 mt-30 mb-30 rounded-2xl bg-gray-950">
+    <!-- Admin Navbar -->
+    <x-admin.navbar />
+
+    <div class="mt-30 mx-30 bg-gray-950 rounded-2xl mb-30">
         <!-- Return button -->
-        <div class="flex">
-            <a href="{{ route('admin.index') }}" class="mx-10 mt-10 rounded-lg bg-amber-400 px-10 py-3 text-center font-bold text-black transition hover:bg-amber-300">Back</a>
+        <div class="flex justify-begin">
+            <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded-xl"> Back </a>
         </div>
 
         <section class="py-5">
-            <!-- Title -->
-            <div class="px-10 py-10">
-                <h1 class="text-4xl font-bold text-white">Admin Panel</h1>
-                <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
-                <p class="mt-2 mb-2 text-gray-500">Manage or see your orders.</p>
-            </div>
 
+            <!-- Header -->
+            <div class="px-10 py-10">
+
+            <h1 class="text-4xl font-bold text-white">
+                    Admin Painel
+            </h1>
+
+            <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
+
+            <p class="mt-2 text-gray-500 mb-2">
+                Manage or create products.
+            </p>
+        
             <!-- Session Messages -->
             @session('order')
                 <div class="mx-10 mb-5 rounded-lg bg-green-600 p-3 text-center font-bold text-white">{{ session('order') }}</div>
             @endsession
 
             <!-- Order -->
-            <div class="flex flex-col gap-5 px-10 pb-10">
+            <div class="flex flex-col gap-4 px-10 mt-10 pb-10">
 
                 @forelse($orders as $order)
                     <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg">

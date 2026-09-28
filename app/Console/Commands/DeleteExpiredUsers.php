@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\User;
@@ -17,5 +17,6 @@ class DeleteExpiredUsers extends Command
     public function handle()
     {
         User::onlyTrashed()->where('deleted_at', '<=', now()->subDays(30))->forceDelete();
+
     }
 }

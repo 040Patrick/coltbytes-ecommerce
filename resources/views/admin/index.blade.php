@@ -43,7 +43,7 @@
             </a>
 
             <!-- Orders -->
-            <a href="{{ route('order.index') }}" class="group rounded-2xl border border-black/10 bg-gray-950 p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
+            <a href="{{ route('admin.orders.index') }}" class="group rounded-2xl border border-black/10 bg-gray-950 p-6 transition hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-lg">
 
                 <div class="mb-6 flex items-center justify-between">
                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-400 text-xl font-bold text-black">

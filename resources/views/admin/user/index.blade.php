@@ -1,28 +1,37 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-30 mx-30 mb-30 rounded-2xl bg-gray-950">
+    <!-- Admin Navbar -->
+    <x-admin.navbar />
+
+    <div class="mt-30 mx-30 bg-gray-950 rounded-2xl mb-30">
         <!-- Return button -->
-        <div class="flex">
-            <a href="{{ route('admin.index') }}" class="mt-10 mx-10 rounded bg-amber-400 p-3 px-10 text-center font-bold text-black hover:bg-amber-300">
-                Back
-            </a>
+        <div class="flex justify-begin">
+            <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded-xl"> Back </a>
         </div>
 
-        <section class="m-4 py-5">
+        <section class="py-5">
+
             <!-- Header -->
             <div class="px-10 py-10">
-                <h1 class="text-4xl font-bold text-white">Admin Painel</h1>
-                <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
-                <p class="mt-2 mb-2 text-gray-500">Manage and view your users.</p>
-            </div>
+                
+            <h1 class="text-4xl font-bold text-white">
+                    Admin Painel
+            </h1>
+
+            <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
+            
+            <p class="mt-2 text-gray-500  mb-2">
+                    Manage or create products.
+            </p>
+        
 
             @session('roles')
                 <div class="rounded bg-green-600 p-2 text-center font-bold text-white">{{ session('roles') }}</div>
             @endsession
 
             <!-- Users -->
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 mx-10 mt-10">
                 @forelse($users as $user)
                     <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg">
                         <!-- User information -->

@@ -26,7 +26,7 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route; 
 
 /**
- * GLOBAL ROUTES
+ * Global Routes
  */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Contact
@@ -39,15 +39,13 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::post('/stripe/webhooks', [StripeWebhookController::class, 'handle']);
 
 /**
- * GUEST ROUTES
+ * Guest Routes
  */
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.store')->middleware('throttle:login');
-
     // Register 
     Route::resource('/register', RegisterController::class)->only('index', 'store');    
-
     // Forgot Password 
     Route::controller(ForgotPasswordController::class)->group(function () {
         Route::get('/forgot-password', 'request')->name('password.request');
@@ -60,10 +58,12 @@ Route::middleware('guest')->group(function () {
     });
 }); 
     
-// AUTH ROUTES
+/**
+ * Auth Routes
+ */
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
-
+    
     // Verified
     Route::middleware('verified')->group(function () {
         // Profile
@@ -79,20 +79,19 @@ Route::middleware('auth')->group(function () {
         // User Order 
         Route::get('/myOrders', [OrderController::class, 'index'])->name('user.order.index');
 
-        /**
-        * Admin
-         */
+        // Admin
         Route::middleware('admin')->prefix('admin')->group(function () {
+            // Index
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
-            // Admin product
+            // Product
             Route::resource('/products', AdminProductController::class)->names('admin.products');
+            // Order
+            Route::resource('/order', AdminOrderController::class)->names('admin.orders');
+            // User
+            Route::resource('/users', AdminUserController::class)->names('admin.users');
             // Product Image
             Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
-            // Order
-            Route::resource('/order', AdminOrderController::class);
-            // User
-            Route::resource('/users', AdminUserController::class)->names('admin.users');
             // Role 
             Route::resource('/Role', OrderController::class);
             // Category
@@ -100,7 +99,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/product/{product}/categories', [CategoryController::class, 'sync'])->name('products.categories.sync');
         });
     });
-
     // Checkout
     Route::controller(CheckoutController::class)->prefix('checkout')->name('checkout.')->group(function () {
         Route::get('{product}', 'index')->name('index');
@@ -108,8 +106,8 @@ Route::middleware('auth')->group(function () {
         Route::get('success/{order}',  'success')->name('success');
         Route::get('cancel/{product}/{order}', 'cancel')->name('cancel');
     });
-    
-    // VERIFY EMAIL
+
+    // Verify Email
     Route::controller(VerifyEmailController::class)->group(function () {
         Route::get('/email-verify', 'notice')->name('verification.notice');
         Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');

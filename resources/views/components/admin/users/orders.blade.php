@@ -27,7 +27,7 @@
 
             @foreach($user->orders as $order)
                 <div class="flex items-center justify-between gap-10 rounded border p-4">
-                    <a href="{{ route('order.index') }}" class="font-bold hover:text-amber-500">
+                    <a href="{{ route('admin.orders.index') }}" class="font-bold hover:text-amber-500">
                         #{{ $order->id }}
                     </a>
 

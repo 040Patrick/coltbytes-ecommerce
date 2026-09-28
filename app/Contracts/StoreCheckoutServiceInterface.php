@@ -4,8 +4,6 @@ namespace App\Contracts;
 
 use App\Http\Requests\Checkout\StoreCheckoutRequest;
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 Interface StoreCheckoutServiceInterface
 {

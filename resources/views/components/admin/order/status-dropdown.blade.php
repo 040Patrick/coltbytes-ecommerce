@@ -9,7 +9,7 @@
     <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center">
 
         <div class="flex flex-col gap-5 rounded-lg bg-white p-6 shadow-lg">
-            <form action="{{ route('order.update', $order) }}" method="POST">
+            <form action="{{ route('admin.orders.update', $order) }}" method="POST">
                 @csrf
                 @method('PATCH')
 
