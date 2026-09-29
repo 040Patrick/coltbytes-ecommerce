@@ -3,7 +3,7 @@
 @section('content')
     <!-- Addresses -->
     <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
-        <div class="w-full max-w-xl rounded-lg bg-black px-10 py-12 mb-5">
+        <div class="w-full max-w-xl rounded-xl bg-gray-950 px-10 py-12 mb-5">
 
             <!-- Title -->
             <div class="flex flex-col">
@@ -20,56 +20,19 @@
                 </div>
             </div>
 
+        <div></div>
             <!-- Address messages -->
             @session('address')
-                <div class="bg-green-600 text-white text-center rounded mt-5 font-bold p-2">{{ session('address') }}</div>
+                <div class="bg-green-600 text-white text-center rounded mt-5 mb-5 font-bold p-2">{{ session('address') }}</div>
             @endsession
 
             <!-- Manage Addresses -->
             @if($addresses->isEmpty())
-                <!-- Create --> 
-                <div x-data="{add: false}" >
-
-                    <button type="button" @click="add=true" x-show="!add" class="bg-amber-400 p-2 px-5 mt-5 rounded text-center font-bold w-full text-center">
-                        Add
-                    </button>
-
-                    <div x-show="add">
-                        <!-- Title -->
-                        <div >
-                            <h1 class="text-white font-bold text-2xl text-center py-5 underline">
-                                Add first Address
-                            </h1>
-                        </div>
-
-                        <!-- Form -->
-                        <form action="{{ route('addresses.store') }}" method="post" class="bg-black px-5 flex flex-col">
-                            @csrf 
-                            <x-address.form :countries="$countries" button="Create"/>
-                        </form>
-
-                        <button type="button" @click="add = false" class="mt-4 font-black bg-red-600 hover:bg-red-500 w-full p-2 rounded cursor-pointer">
-                            Cancel
-                        </button>
-                    </div>
-                </div>
+                <x-address.modal-create :countries="$countries" :addresses="$addresses"/>
+                
             @else 
                 <!-- Show --> 
-                @foreach($addresses as $address)
-                    <div class="bg-white rounded mt-5 flex items-start">
-                        <div class="bg-white p-5 rounded-2xl flex-1 min-w-0 flex flex-col justify-between text-black font-bold text-lg ">
-                            <p class="text-2xl" >{{ $address->street }} - {{ $address->number}}</p>
-                            <p class="text-2xl" >{{ $address->neighborhood }}</p>
-                            <p class="text-2xl" >{{ $address->city }} - {{ $address->state}}</p>
-                            <p class="text-2xl" >{{ $address->postal_code }}</p>
-
-                            <!-- Edit dropdown --> 
-                            <div class="p-5 mt-5">
-                                <x-address.dropdown :countries="$countries" :address="$address" title="Edit address"/>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <x-address.modal-show :countries="$countries"  :addresses="$addresses"/>
 
                 @if(auth()->user()->addresses->count() === 3)
                     <div class="mt-5"> 
@@ -78,8 +41,7 @@
                         </p>
                     </div>
                 @else 
-                    
-                    
+                    <x-address.modal-create :countries="$countries" :addresses="$addresses"/>
                 @endif
             @endif
         </div>

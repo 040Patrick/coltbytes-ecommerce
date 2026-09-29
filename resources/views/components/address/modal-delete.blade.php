@@ -6,7 +6,7 @@
         @method('delete')
 
         <!-- Delete button -->
-        <button type="button" @click="confirmDelete = true" class="w-full rounded-lg bg-red-500 px-7 py-3 font-bold text-black transition hover:bg-red-400">
+        <button type="button" @click="confirmDelete = true" class="rounded-xl bg-red-500 px-7 py-3 font-bold text-black transition hover:bg-red-400">
             Delete
         </button>
 
