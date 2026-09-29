@@ -20,13 +20,13 @@
 
                 <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
 
-                <p class="mt-2 text-gray-500  mb-2">
+                <p class="mt-2 text-gray-500">
                     Manage or create products.
                 </p>
             
                 <!-- Create product -->
                 <div x-data="{ add: false }" class="flex justify-center">
-                    <button type="button" @click="add = true" class="mt-5 rounded-xl bg-amber-400 p-4 px-10 text-center font-bold text-black hover:bg-amber-300">
+                    <button type="button" @click="add = true" class="rounded-xl bg-amber-400 p-3 px-10 text-center font-bold text-black hover:bg-amber-300">
                         Create new Product
                     </button>
 

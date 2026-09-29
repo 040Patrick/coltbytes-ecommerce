@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $products =  (new Product())->filter($request)->when($request->search, function ($query, $search) {
             $query->where('name', 'like', "${search}$");
-        })->paginate(5);
+        })->paginate(8);
 
         return view('home', ['title' => 'Home', 'products' => $products,]);
     }

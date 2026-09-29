@@ -15,7 +15,7 @@ abstract class Filter
         $array = [];
         $arrayIn = [];
 
-        $OperatorFilters = $request->except('search');
+        $OperatorFilters = $request->except(['search', 'page']);
 
         foreach($OperatorFilters as $field => $operators)
         {

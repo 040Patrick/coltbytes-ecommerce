@@ -73,11 +73,11 @@
                     <button type="submit" class="w-full rounded-lg bg-amber-400 px-7 py-3 font-bold text-black transition hover:bg-amber-300">
                         Save
                     </button>
+
+                    <!-- Delete Confirmation -->
+                    <x-user.modal-delete :user="auth()->user()"/>
                 </form>
             </div>
-
-            <!-- Delete Confirmation -->
-            <x-user.modal-delete :user="auth()->user()"/>
     </div>
 </div>
 @endsection
