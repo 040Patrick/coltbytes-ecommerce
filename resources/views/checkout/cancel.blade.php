@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="min-h-screen bg-black px-4 py-12">
+    <div class="min-h-screen px-4 py-12">
         <div class="mx-auto flex min-h-[70vh] w-full max-w-2xl items-center justify-center">
             <div class="w-full rounded-3xl border border-zinc-800 bg-zinc-950 p-8 text-center shadow-2xl sm:p-10">
                 <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-zinc-800">

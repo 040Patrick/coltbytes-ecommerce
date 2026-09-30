@@ -2,7 +2,7 @@
 
 <div x-data="{ add: false }" class="flex gap-3 justify-center">
     <!-- Edit -->
-    <button type="button" @click="add = true" x-show="!add" class="text-black text-center px-5 rounded-xl font-bold bg-amber-400 mt-5 p-2 w-full hover:bg-amber-300">
+    <button type="button" @click="add = true" x-show="!add" class="text-black text-center rounded-xl font-bold bg-amber-400 mt-5 p-3 w-full hover:bg-amber-300">
         Add Address
     </button>
 

@@ -86,7 +86,7 @@
     </button>
     
     <!-- Close -->
-    <button type="button" @click="add = false" class="font-black text-black bg-red-500 hover:bg-red-300 p-3 rounded-xl w-full cursor-pointer">
+    <button type="button" @click="add = false" class="font-black text-black bg-red-500 hover:bg-red-400 p-3 rounded-xl w-full cursor-pointer">
         Close
     </button>
 </div>

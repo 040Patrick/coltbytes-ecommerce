@@ -10,11 +10,11 @@
             </h1>
 
             <h2 class="text-3xl md:text-4xl font-bold mt-6">
-                Page not found
+                Method not allowed
             </h2>
 
             <p class="text-gray-400 text-lg mt-4 max-w-md mx-auto py-5">
-                The page you're looking for doesn't exist or may have been moved.
+                This action isn't supported for this page.
             </p>
             
             <a href="{{ route('home') }}" class="inline-block mt-8 bg-amber-400 text-black font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition">
