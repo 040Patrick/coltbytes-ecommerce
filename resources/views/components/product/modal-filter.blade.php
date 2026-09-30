@@ -1,5 +1,6 @@
 <div x-data="{ open : false, filters : {field: '', operator: '', value: ''} }">
 
+    <!-- Open Filters -->
     <button type="button" @click="open = true" class="rounded-lg bg-blue-700 px-4 py-2 font-bold text-black hover:bg-blue-600">
         Filters
     </button>
@@ -53,8 +54,6 @@
                     Close
                 </button>
             </div>
-
         </form>
-
     </div>
 </div>

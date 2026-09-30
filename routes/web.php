@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
         // User
         Route::resource('/user', UserController::class)->except('index', 'store');
         // Phone
-        Route::resource('/phone', PhoneController::class)->only('index', 'update', 'destroy', 'store');
+        Route::resource('/phone', PhoneController::class)->only('update', 'destroy', 'store');
         // Adresses
         Route::resource('/addresses', AddressController::class);
         // User Order 

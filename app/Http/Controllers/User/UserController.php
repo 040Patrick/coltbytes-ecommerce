@@ -31,7 +31,7 @@ class UserController extends Controller implements HasMiddleware
      */
     public function edit(User $user): View
     {
-        return view('user.edit', ['title' => 'edit']);
+        return view('user.edit', ['title' => 'Edit']);
     }
 
     /**

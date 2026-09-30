@@ -1,7 +1,7 @@
 @props(['order'])
 
 <div x-data="{ status: false }">
-
+    
     <button type="button" @click="status = true">
         <x-icons.dropdown />
     </button>
@@ -33,7 +33,5 @@
                 Close
             </button>
         </div>
-
     </div>
-
 </div>

@@ -5,7 +5,6 @@
     <div class="mx-30 mb-30 mt-20 bg-amber-10 flex items-center justify-center px-6 py-16">
 
         <!-- Section -->
-
         <section class="w-full max-w-4xl bg-gray-950 text-white rounded-2xl px-8 py-12 md:px-14 md:py-10 shadow-xl">
 
             <!-- Page name -->
@@ -18,8 +17,6 @@
 
             <!-- About section  -->
             <div class="space-y-8">
-
-                <!-- Section one -->
                 <div>
                     <h2 class="text-2xl font-semibold mb-3">
                         Who we are
@@ -31,7 +28,6 @@
                     </p>
                 </div>
 
-                <!-- Section two -->
                 <div>
                     <h2 class="text-2xl font-semibold mb-3">
                         Our goal
@@ -43,7 +39,6 @@
                     </p>
                 </div>
 
-                <!-- Section tree -->
                 <div>
                     <h2 class="text-2xl font-semibold mb-3">
                         Why choose us?
@@ -57,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- Back home -->
+            <!-- Back to back -->
             <div class="mt-12">
                 <a href="{{ route('home') }}" class="inline-block bg-amber-400 text-black font-semibold px-6 py-3 rounded-lg hover:bg-amber-300 transition">
                     Back to Home

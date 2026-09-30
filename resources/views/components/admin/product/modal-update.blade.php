@@ -67,7 +67,7 @@
                     <!-- Add image -->
                     <form action="{{ route('products.images.store', $product) }}" method="POST" enctype="multipart/form-data" class="mb-6 rounded-xl border border-dashed border-gray-700 bg-gray-950 p-5">
                         @csrf
-                        <x-admin.product.image-form :product="$product"/>
+                        <x-admin.product.modal-image-form :product="$product"/>
                     </form>
 
 

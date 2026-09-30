@@ -5,7 +5,7 @@ namespace App\Http\Requests\Phone;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePhoneRequest extends FormRequest
+class StorePhoneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdatePhoneRequest extends FormRequest
     {
         return [
             'phone' => [
-                'nullable',
+                'required',
                 'string',
                 'regex:/^\(\d{2}\)\s?\d{4,5}-\d{4}$/',
             ],

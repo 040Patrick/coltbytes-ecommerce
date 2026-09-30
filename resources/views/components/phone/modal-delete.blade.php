@@ -1,13 +1,11 @@
-@props(['phone'])
-
 <div x-data="{ confirmDelete: false }">
-    <form action="{{ route('phone.destroy', $phone) }}" method="post">
+    <form action="{{ route('phone.destroy', auth()->user()->phone) }}" method="post">
         @csrf
         @method('delete')
 
         <!-- Delete button -->
-        <button type="button" @click="confirmDelete = true" class="rounded bg-red-500 px-4 w-full py-3 font-bold text-black hover:bg-red-400">
-            Delete
+        <button type="button" @click="confirmDelete = true" class="rounded-xl bg-red-500 px-4 w-full py-3 font-bold text-black hover:bg-red-400">
+            Delete Phone
         </button>
 
         <!-- Modal -->
@@ -39,7 +37,7 @@
                         Cancel
                     </button>
 
-                    <button type="submit" class="rounded-lg bg-red-500 px-5 py-2.5 font-bold text-black transition hover:bg-red-400">
+                    <button type="submit" class="rounded-xl bg-red-500 px-5 py-2.5 font-bold text-black transition hover:bg-red-400">
                         Yes, delete it
                     </button>
                 </div>

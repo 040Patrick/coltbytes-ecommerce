@@ -80,7 +80,7 @@
 
                     <!-- Update -->
                     <div x-data="{ updateProduct: false }" class="flex items-center gap-3">
-                        <x-admin.product.product-update :product="$product" :categories="$categories"/>
+                        <x-admin.product.modal-update :product="$product" :categories="$categories"/>
                     </div>
 
                     <!-- Delete product -->

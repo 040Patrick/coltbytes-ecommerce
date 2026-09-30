@@ -5,6 +5,7 @@
     <x-admin.navbar />
 
     <div class="mt-30 mx-30 bg-gray-950 rounded-2xl mb-30">
+        
         <!-- Return button -->
         <div class="flex justify-begin">
             <a href="{{ route('admin.index') }}" class="bg-amber-400 p-3 px-10 mt-10 mx-10 hover:bg-amber-300 text-black text-center font-bold rounded-xl"> Back </a>
