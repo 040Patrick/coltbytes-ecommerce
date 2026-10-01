@@ -48,7 +48,7 @@
                                     {{ $order->user->first_name }} {{ $order->user->last_name }}
                                 </div>
 
-                                <div class="font-bold text-amber-600">
+                                <div id="order-{{ $order->id }}" class="font-bold text-amber-600">
                                     Total: R$ {{ number_format($order->total, 2, ',', '.') }}
                                 </div>
 

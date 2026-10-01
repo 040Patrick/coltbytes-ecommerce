@@ -11,11 +11,11 @@
     <!-- Modal -->
     <div x-show="status" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/60 px-4">
 
-        <div class="w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 shadow-2xl">
+        <div class="w-full max-w-md rounded-xl border border-gray-100 bg-gray-950 p-6 shadow-2xl">
 
             <!-- Title -->
             <div class="mb-6 text-center">
-                <p class="text-2xl font-bold text-black">
+                <p class="text-2xl font-bold text-gray-200">
                     Manage Roles
                 </p>
 
@@ -32,12 +32,12 @@
                 <!-- Roles -->
                 <div class="space-y-3">
                     @foreach($roles as $role)
-                        <label for="role-{{ $user->id }}-{{ $role->id }}" class="flex cursor-pointer items-center justify-between rounded-lg border border-gray-200 px-4 py-3 transition hover:border-amber-400 hover:bg-amber-50">
-                            <span class="font-bold capitalize text-gray-800">
+                        <label for="role-{{ $user->id }}-{{ $role->id }}" class="flex cursor-pointer items-center justify-between rounded-lg border border-gray-200 px-4 py-3 transition bg-gray-900 hover:bg-gray-700">
+                            <span class="font-bold capitalize text-gray-200">
                                 {{ $role->slug }}
                             </span>
 
-                            <input type="checkbox" id="role-{{ $user->id }}-{{ $role->id }}" name="roles[]" value="{{ $role->id }}" class="h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-400" @checked($user->roles->contains($role->id))>
+                            <input type="checkbox" id="role-{{ $user->id }}-{{ $role->id }}" name="roles[]" value="{{ $role->id }}" class="h-5 w-5 rounded border-gray-900 text-amber-500 focus:ring-amber-400" @checked($user->roles->contains($role->id))>
                         </label>
                     @endforeach
                 </div>
