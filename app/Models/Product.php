@@ -48,10 +48,11 @@ class Product extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+
     /**
-     * Filter
+     * Filters Product
      */
-    public static function filter(Request $request)
+    public function filter(Request $request)
     {
         $OperatorFilter = (new ProductFilter)->filter($request);
 
@@ -60,14 +61,21 @@ class Product extends Model
         if($OperatorFilter['arrayIn'])
         {
             foreach($OperatorFilter['arrayIn'] as $filter)
-            { 
-                $query->where(...$filter);
+            {
+                if($filter[1] === 'in')
+                {
+                    $query->whereIn($filter[0], array_values(explode(',', $filter[2])));
+                }
+                else 
+                {
+                    $query->where(...$filter);
+                }
             }
         }
 
         if($OperatorFilter['array'])
         {
-            $query->where(...$OperatorFilter['array']);
+            $query->where(... $OperatorFilter['array']);
         }
 
         return $query;

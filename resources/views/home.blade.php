@@ -37,6 +37,8 @@
                 </div>
             </div>
 
+            <!-- Filters button --> 
+            <x-product.filters.modal-filter />
             <!-- Products -->
             <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4" id="products">
                 @forelse ($products as $product)

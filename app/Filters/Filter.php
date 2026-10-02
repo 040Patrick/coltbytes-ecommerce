@@ -1,5 +1,6 @@
 <?php 
 declare(strict_types=1);
+
 namespace App\Filters;
 
 use Exception;
@@ -8,34 +9,39 @@ use Illuminate\Http\Request;
 abstract class Filter
 {
     public array $allowedOperators = [];
-    public array $translatedOperators = [];
+    public array $translatedOperator = [];
 
-    public function filter(Request $request): array 
+    public function filter(Request $request): array
     {
         $array = [];
         $arrayIn = [];
 
-        $OperatorFilters = $request->except(['search', 'page']);
+        $fieldOperator = $request->except(['search', 'page']);
 
-        foreach($OperatorFilters as $field => $operators)
+        foreach($fieldOperator as $field => $operators)
         {
             if(!isset($this->allowedOperators[$field]))
             {
-                throw new Exception("allowedOperators does not have {$field}");
+                throw new Exception("AllowedOperators does not have field: {$field}");
             }
 
             if(is_array($operators))
             {
                 foreach($operators as $operator => $value)
                 {
+                    if(!isset($this->translatedOperator[$operator]))
+                    {
+                        throw new Exception("TranslatedOperator does not have operator: {$operator}");
+                    }
+
                     $arrayIn[] = [
-                        $field, 
-                        $this->translatedOperators[$operator],
+                        $field,
+                        $this->translatedOperator[$operator],
                         $value
                     ];
                 }
             }
-            else
+            else 
             {
                 $array = [
                     $field,
@@ -45,8 +51,8 @@ abstract class Filter
         }
 
         return [
-            'array' => $array,
-            'arrayIn' => $arrayIn
+            'arrayIn' => $arrayIn,
+            'array' => $array
         ];
     }
 }
