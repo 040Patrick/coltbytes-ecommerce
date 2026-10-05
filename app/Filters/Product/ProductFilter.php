@@ -12,7 +12,7 @@ class ProductFilter extends Filter
         'name' => ['eq', 'ne', 'in'],
         'slug' => ['eq', 'ne', 'in'],
         'price' => ['gt', 'gte', 'lt', 'lte', 'in', 'eq', 'ne'],
-        'stock' => ['gt', 'gte', 'lt', 'lte', 'in', 'eq', 'ne']
+        'stock' => ['gt', 'gte', 'lt', 'lte', 'in', 'eq', 'ne'],
     ];
     
     public array $translatedOperator = [

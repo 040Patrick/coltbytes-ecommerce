@@ -15,23 +15,18 @@
             </p>
         </div>
 
-        <!-- Success messages -->
-        @if(session('updated') || session('phone'))
-            <div class="mt-8 space-y-2">
-                @if(session('updated'))
-                    <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
-                        {{ session('updated') }}
-                    </div>
-                @endif
-
-                @if(session('phone'))
-                    <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
-                        {{ session('phone') }}
-                    </div>
-                @endif
+        @session('updated')
+            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
+                {{ session('updated') }}
             </div>
         @endif
 
+        @session('phone')
+            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
+                {{ session('phone') }}
+            </div>
+        @endif
+            
         <!-- Personal information -->
         <section class="mt-8 rounded-xl border border-gray-800 bg-gray-900/60 p-6">
             <div class="mb-6">

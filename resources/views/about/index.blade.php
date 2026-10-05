@@ -54,7 +54,7 @@
 
             <!-- Back to back -->
             <div class="mt-12">
-                <a href="{{ route('home') }}" class="inline-block bg-amber-400 text-black font-semibold px-6 py-3 rounded-lg hover:bg-amber-300 transition">
+                <a href="{{ route('home') }}" class="inline-block bg-amber-400 text-black font-bold px-6 py-3 rounded-lg hover:bg-amber-300 transition">
                     Back to Home
                 </a>
             </div>

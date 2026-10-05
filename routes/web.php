@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/account/show', [AccountController::class, 'show'])->name('account.show');
         // User
         Route::resource('/user', UserController::class)->except('store');
+        
         // Address 
         Route::resource('/address', AddressController::class);
         // Phone

@@ -7,11 +7,10 @@
 
             <div class="py-5 flex justify-center px-10 ">
                 @session('updated')
-                    <span class="bg-green-600 text-white text-center rounded font-bold p-2 w-full">{{ session('updated') }}</span>
+                    <span class="w-full rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">{{ session('updated') }}</span>
                 @endsession
             </div>
             
-            <!-- SECTION -->
             <div class="border-b border-gray-800 px-10 py-8">
                 <div class="flex items-center gap-6">
                     <!-- Avatar -->

@@ -6,11 +6,10 @@
         <section class="w-full max-w-4xl bg-gray-950 text-white rounded-2xl px-10 py-10 shadow-xl">
     
             <!-- Success Message -->
-            <div class="p-5">
-                @session('contact')
-                    <div class="bg-green-600 text-white font-bold p-2 rounded text-center"> {{ session('contact')}} </div>
-                @endsession
-            </div>
+            @session('contact')
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300 mb-5"> {{ session('contact')}} </div>
+            @endsession
+            
             <!-- Title -->
             <div class="mb-10">
                 <h1 class="text-5xl font-bold">
@@ -77,7 +76,7 @@
                     <a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition"> Back </a>
 
                     <!-- Submit form -->
-                    <button type="submit" class="bg-amber-400 text-black font-semibold px-7 py-3 rounded-lg hover:bg-amber-300 transition">
+                    <button type="submit" class="bg-amber-400 text-black font-bold px-7 py-3 rounded-lg hover:bg-amber-300 transition">
                         Send Message
                     </button>
                 </div>

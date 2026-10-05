@@ -16,7 +16,7 @@ abstract class Filter
         $array = [];
         $arrayIn = [];
 
-        $fieldOperator = $request->except(['search', 'page']);
+        $fieldOperator = $request->except(['search', 'page', 'category']);
 
         foreach($fieldOperator as $field => $operators)
         {

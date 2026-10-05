@@ -68,9 +68,9 @@
                     </h2>
                     <div class="grid justify-items-center grid-cols-5 gap-5">
                         @foreach($product->categories as $category)
-                            <p class="bg-amber-400 rounded-full p-1 px-3 font-bold text-white-400">
+                            <a href="{{ route('home', ['category' => $category->slug]) }}" class="bg-amber-400 rounded-full p-1 px-3 font-bold text-white-400 hover:amber-300">
                                 {{ $category->name }}
-                            </p>
+                            </a>
                         @endforeach
                     </div>
                 </div>
