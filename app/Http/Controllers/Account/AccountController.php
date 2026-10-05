@@ -12,6 +12,14 @@ class AccountController extends Controller
      */
     public function index(): View
     {
-        return view('account.index', ['title' => 'Account']);
+        return view('account.layout', ['title' => 'Account']);
+    }
+
+    /**
+     * Account show
+     */
+    public function show(): View
+    {
+        return view('account.index', ['title' => 'Show']);
     }
 }

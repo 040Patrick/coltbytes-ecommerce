@@ -53,18 +53,20 @@
                     </label>
                 </div>   
                     
+                <!-- Error Message -->
+                @error('address_id')
+                    <p class="w-full text-center font-bold text-red-600">
+                        {{ $message }}
+                    </p>
+                @enderror
+
                 <!-- Address -->
                 <div class="w-full rounded-2xl bg-gray-900 p-6 shadow-lg">
                     @if(auth()->user()->addresses->isEmpty())
-                        {{-- Component here --}}
+                        <a href="{{ route('address.index') }}" class="w-full bg-amber-400 p-3 text-black text-center font-bold rounded-xl hover:bg-amber-300">
+                            Create Address
+                        </a>
                     @else
-                        <!-- Error Message -->
-                        @error('address_id')
-                            <p class="w-full text-center font-bold text-red-600">
-                                {{ $message }}
-                            </p>
-                        @enderror
-
                         <div class="mb-5 flex items-center justify-between">
                             <div>
                                 <h2 class="text-xl font-bold text-white">Delivery address</h2>

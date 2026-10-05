@@ -70,14 +70,23 @@ Route::middleware('auth')->group(function () {
         Route::resource('/profile', ProfileController::class)->only('index', 'update', 'destroy');
         // Account 
         Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+        Route::get('/account/show', [AccountController::class, 'show'])->name('account.show');
         // User
-        Route::resource('/user', UserController::class)->except('index', 'store');
+        Route::resource('/user', UserController::class)->except('store');
+        // Address 
+        Route::resource('/address', AddressController::class);
         // Phone
         Route::resource('/phone', PhoneController::class)->only('update', 'destroy', 'store');
-        // Adresses
-        Route::resource('/addresses', AddressController::class);
         // User Order 
         Route::get('/myOrders', [OrderController::class, 'index'])->name('user.order.index');
+
+        // Checkout
+        Route::controller(CheckoutController::class)->prefix('checkout')->name('checkout.')->group(function () {
+            Route::get('{product}', 'index')->name('index');
+            Route::post('{product}', 'store')->name('store');
+            Route::get('success/{order}',  'success')->name('success');
+            Route::get('cancel/{product}/{order}', 'cancel')->name('cancel');
+        });
 
         // Admin
         Route::middleware('admin')->prefix('admin')->group(function () {
@@ -98,13 +107,6 @@ Route::middleware('auth')->group(function () {
             Route::resource('/category', CategoryController::class)->only('store', 'destroy');
             Route::post('/product/{product}/categories', [CategoryController::class, 'sync'])->name('products.categories.sync');
         });
-    });
-    // Checkout
-    Route::controller(CheckoutController::class)->prefix('checkout')->name('checkout.')->group(function () {
-        Route::get('{product}', 'index')->name('index');
-        Route::post('{product}', 'store')->name('store');
-        Route::get('success/{order}',  'success')->name('success');
-        Route::get('cancel/{product}/{order}', 'cancel')->name('cancel');
     });
 
     // Verify Email

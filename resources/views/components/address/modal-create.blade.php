@@ -19,7 +19,7 @@
             </div>
 
             <!-- Form -->
-            <form action="{{ route('addresses.store') }}" method="post" class="px-5 py-5 flex flex-col">
+            <form action="{{ route('address.store') }}" method="post" class="px-5 py-5 flex flex-col">
                 @csrf
 
                 <x-address.form button="Add" :countries="$countries" />

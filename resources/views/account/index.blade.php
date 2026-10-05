@@ -1,35 +1,45 @@
 @extends('account.layout')
 
-@section('content')
-    <div class="min-h-screen flex flex-col items-center justify-center px-6 py-16">
-        <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
-            <div class="w-full max-w-xl rounded-lg bg-gray-950 px-10 py-12">
-                <div class="flex flex-col">
-                    
-                    <!-- Title -->
-                    <div>
-                        <h1 class="text-5xl font-bold text-white">
-                            Account
-                        </h1>
+@section('account-content')
+    <div class="flex flex-col">
+        <!-- Header -->
+        <div>
+            <h1 class="text-4xl font-bold text-white">
+                Account
+            </h1>
 
-                        <div class="mt-4 h-1 w-20 rounded-xl bg-amber-400"></div>
+            <div class="mt-3 h-1 w-16 rounded-full bg-amber-400"></div>
 
-                        <p class="mt-6 text-gray-300">
-                            Change you account informations.
-                        </p>
-                    </div>
+            <p class="mt-4 text-gray-400">
+                Manage your account information..
+            </p>
+        </div>
 
-                    <!-- Section -->
-                    <section>
-                        <p class="text-white font-bold w-full px-5 py-20 text-center">
-                            Manage your account information, update your personal details, and keep your contact information up to date. From here, you can review and manage the information associated with your account.
-                        </p>
-                    </section>
+        <!-- Information -->
+        <section class="mt-10 rounded-xl border border-gray-800 bg-gray-900/60 p-6">
+            <h2 class="text-lg font-bold text-white">
+                Account information
+            </h2>
 
-                    <!-- home -->
-                    <a href="{{ route('home') }}" class="text-black font-bold text-center bg-amber-400 rounded-xl p-3 hover:bg-amber-300"> Home </a>
-                </div>
-            </div>
-        </div> 
-    </div>
+            <p class="mt-3 leading-7 text-gray-400">
+                Manage your account information, update your personal details,
+                and keep your contact information up to date.
+            </p>
+
+            <p class="mt-3 leading-7 text-gray-400">
+                From here, you can review and manage the information associated
+                with your account.
+            </p>
+        </section>
+
+        <!-- Action -->
+        <div class="mt-8 flex justify-end">
+            <a href="{{ route('home') }}"
+               class="rounded-xl bg-amber-400 px-6 py-3 font-bold text-black transition hover:bg-amber-300">
+                Home
+            </a>
+        </div>
+    </div>   
 @endsection
+
+

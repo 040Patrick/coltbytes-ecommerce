@@ -19,7 +19,7 @@
             </div>
 
             <!-- Form -->
-            <form action="{{ route('addresses.update', $address) }}" method="post" class="px-5 py-5 flex flex-col">
+            <form action="{{ route('address.update', $address) }}" method="post" class="px-5 py-5 flex flex-col">
                 @csrf
                 @method("patch")
                 <x-address.form button="Edit" :address="$address" :countries="$countries" />

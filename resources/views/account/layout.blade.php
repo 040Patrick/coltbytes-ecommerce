@@ -1,27 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> {{ $title ?? 'ColtByte'}}</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="min-h-screen flex flex-col">
-        <!-- Header -->
-        <x-header/>
+@extends('layout.layout')
 
-        <!-- Main area -->
-        <div class="flex flex-1">
-            <aside class="w-64 shrink-0">
-                <x-account.aside/>
-            </aside>
+@section('content')
+    <div class="min-h-200 mx-auto mt-30 flex w-full max-w-250 overflow-hidden rounded-2xl bg-gray-950 shadow-xl mb-30">
+        <!-- Aside -->
+        <aside class="w-50 shrink-0 border-r border-gray-800 bg-gray-900/80 p-4">
+            <div class="mb-6 px-3">
+                <h2 class="text-lg font-bold text-white">
+                    Account
+                </h2>
 
-            <main class="flex-1 bg-amber-100" style="background-image: linear-gradient(to right, rgba(0,0,0,.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,.18) 1px, transparent 1px);background-size: 220px 220px;">
-                @yield('content')
-            </main>
-        </div>
+                <p class="mt-1 text-sm text-gray-500">
+                    Manage your account
+                </p>
+            </div>
 
-        <!-- Footer -->
-        <x-footer/>
-    </body>
-</html> 
+            <!-- Links -->
+            <nav class="flex flex-col gap-1">
+                <a href="{{ route('account.show') }}" class="rounded-xl px-4 py-3 font-bold text-gray-300 transition hover:bg-gray-800 hover:text-white">
+                    Account
+                </a>
+                <a href="{{ route('user.edit', auth()->user()) }}" class="rounded-xl px-4 py-3 font-bold text-gray-300 transition hover:bg-gray-800 hover:text-white">
+                    User
+                </a>
+                <a href="{{ route('address.index') }}" class="rounded-xl px-4 py-3 font-bold text-gray-300 transition hover:bg-gray-800 hover:text-white">
+                    Address
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Content -->
+        <main class="min-w-0 flex-1 p-8">
+            @yield('account-content')
+        </main>
+    </div>
+@endsection
