@@ -28,7 +28,7 @@
         
             <!-- Session Messages -->
             @session('order')
-                <div class="mx-10 mb-5 rounded-lg bg-green-600 p-3 text-center font-bold text-white">{{ session('order') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300 mb-5">{{ session('order') }}</div>
             @endsession
 
             <!-- Order -->

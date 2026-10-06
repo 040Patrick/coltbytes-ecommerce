@@ -3,7 +3,7 @@
     <a href="{{ route('account.index') }}" class="text-black hover:bg-amber-300 rounded p-2">Account</a>
 
     @auth 
-        <a href="{{ route('user.order.index') }}" class="text-black hover:bg-amber-300 rounded p-2">Purchases</a>
+        <a href="{{ route('user.order.index') }}" class="text-black hover:bg-amber-300 rounded p-2">My orders</a>
     @endauth
 
     <!-- LOGOUT -->

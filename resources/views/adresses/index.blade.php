@@ -33,6 +33,10 @@
                 <p class="mt-1 text-sm text-gray-500">
                     Add, view, and manage your delivery addresses.
                 </p>
+                
+                <p class="mt-1 text-sm text-gray-200">
+                    You cannot remove addresses associated with orders.
+                </p>
             </div>
 
             @if($addresses->isEmpty())
@@ -46,18 +50,13 @@
                     </p>
 
                     <div class="mt-6">
-                        <x-address.modal-create
-                            :countries="$countries"
-                            :addresses="$addresses"
+                        <x-address.modal-create :countries="$countries" :addresses="$addresses"
                         />
                     </div>
                 </div>
             @else
                 <div>
-                    <x-address.modal-show
-                        :countries="$countries"
-                        :addresses="$addresses"
-                    />
+                    <x-address.modal-show :countries="$countries" :addresses="$addresses"/>
                 </div>
 
                 @if(auth()->user()->addresses->count() === 3)
@@ -71,10 +70,7 @@
                 @else
 
                     <div class="mt-6">
-                        <x-address.modal-create
-                            :countries="$countries"
-                            :addresses="$addresses"
-                        />
+                        <x-address.modal-create :countries="$countries" :addresses="$addresses"/>
                     </div>
                 @endif
             @endif

@@ -50,15 +50,15 @@
 
             <!-- Session messages -->
             @session('image')
-                <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('image') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center mx-5 font-bold text-green-300 mb-5">{{ session('image') }}</div>
             @endsession
 
             @session('product')
-                <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('product') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center mx-5 font-bold text-green-300 mb-5">{{ session('product') }}</div>
             @endsession
 
             @session('category')
-                <div class="px-10 bg-green-600 text-white font-bold text-center p-3 rounded">{{ session('category') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center mx-5 font-bold text-green-300 mb-5">{{ session('category') }}</div>
             @endsession
 
             <!-- Products -->

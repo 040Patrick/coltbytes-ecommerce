@@ -27,6 +27,7 @@ class AddressController extends Controller implements HasMiddleware
             new Middleware('throttle:5', ['store', 'update',]),
         ];
     }
+    
     /**
      * Update the specified resource in storage.
      */

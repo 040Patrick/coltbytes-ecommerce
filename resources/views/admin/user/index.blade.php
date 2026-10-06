@@ -27,7 +27,7 @@
         
 
             @session('roles')
-                <div class="rounded bg-green-600 p-2 text-center font-bold text-white">{{ session('roles') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300 mb-5">{{ session('roles') }}</div>
             @endsession
 
             <!-- Users -->

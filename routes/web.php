@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function () {
         // Phone
         Route::resource('/phone', PhoneController::class)->only('update', 'destroy', 'store');
         // User Order 
-        Route::get('/myOrders', [OrderController::class, 'index'])->name('user.order.index');
+        Route::get('/orders', [OrderController::class, 'index'])->name('user.order.index');
 
         // Checkout
         Route::controller(CheckoutController::class)->prefix('checkout')->name('checkout.')->group(function () {

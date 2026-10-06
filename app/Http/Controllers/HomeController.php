@@ -23,7 +23,7 @@ class HomeController extends Controller
         }
 
         $products = $products->when($request->search, function ($query, $search) {
-            $query->when('name', 'like', '%{$search}%');
+            $query->where('name', 'like', "%{$search}%");
         })->paginate(8);
 
 

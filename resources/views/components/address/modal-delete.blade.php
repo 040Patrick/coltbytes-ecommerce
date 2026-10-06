@@ -1,13 +1,13 @@
 @props(['address'])
 
 <div x-data="{ confirmDelete: false }">
-    <form action="{{ route('addresses.destroy', $address) }}" method="post">
+    <form action="{{ route('address.destroy', $address) }}" method="post">
         @csrf
         @method('delete')
 
         <!-- Delete button -->
-        <button type="button" @click="confirmDelete = true" class="rounded-xl bg-red-500 px-7 py-3 font-bold text-black transition hover:bg-red-400">
-            Delete
+        <button type="button" @click="confirmDelete = true" class="rounded-xl w-full bg-red-500 px-7 py-3 font-bold text-black transition hover:bg-red-400">
+            Remove Address
         </button>
 
         <!-- Modal -->

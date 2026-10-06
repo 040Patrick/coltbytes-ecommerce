@@ -16,26 +16,27 @@
         
         <!-- Product -->
         <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-950 shadow-xl">
-            <!-- Product Images -->
-            <div x-data="{ current: 0, total: {{ $product->images->count() }}}" class="relative bg-gray-100">
+
+            <!-- Product Image -->
+            <div x-data="{ current : 0, total : {{ $product->images->count() }} }" class="relative bg-gray-100">
                 @forelse($product->images as $index => $image)
                     <div x-show="current === {{ $index }}" class="flex h-[600px] items-center justify-center p-10">
                         <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="max-h-full w-full object-contain">
                     </div>
-                @empty
-                    <div class="flex h-[600px] items-center justify-center text-gray-500">
-                        No image available
+                @empty 
+                    <div class="flex h-[600px] items-center justify-center p-10">
+                        No image Available
                     </div>
                 @endforelse
 
                 @if($product->images->count() > 1)
                     <!-- Previous -->
-                    <button type="button" @click="current = current === 0 ? total - 1 : current - 1" class="absolute left-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-950/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-gray-950/80">
-                        ‹
+                    <button type="button" @click="current = current === 0 ? $total - 1 : current - 1" class="absolute left-5 top-1/2 z-10 -translate-y-1/2 rounded-xl bg-gray-900 px-2 py-1 text-white text-3xl font-bold text-gray-800 transition hover:bg-gray-800">
+                        <
                     </button>
 
                     <!-- Next -->
-                    <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-5 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-950/60 px-5 py-3 text-3xl font-bold text-white transition hover:bg-gray-950/80">
+                    <button type="button" @click="current = current === total - 1 ? 0 : current + 1" class="absolute right-5 top-1/2 z-10 -translate-y-1/2 rounded-xl bg-gray-900 px-2 py-1 text-3xl font-bold text-white transition hover:bg-gray-800">
                         ›
                     </button>
 

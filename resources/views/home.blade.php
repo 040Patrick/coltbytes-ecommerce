@@ -44,11 +44,20 @@
                 @forelse ($products as $product)
                     <a href="{{ route('product.show', $product) }}" class="group overflow-hidden rounded-xl border border-black/10 bg-gray-950 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
                         <!-- Product Image -->
-                        @foreach($product->images as $image)
+                        @forelse($product->images as $image)
+                            @if($loop->first)
+                                <div class="aspect-square overflow-hidden bg-gray-100">
+                                    <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover">
+                                </div>
+                            @endif
+                        @empty 
                             <div class="aspect-square overflow-hidden bg-gray-100">
-                                <img src="{{ Illuminate\Support\Facades\Storage::url($image->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                                <p class="text-center mt-30 h-full w-full object-cover">
+                                    No image avaiable
+                                </p>
                             </div>
-                        @endforeach
+                        @endforelse
+
                         <!-- Product Information -->
                         <div class="p-5">
                             <h2 class="mb-10 truncate text-center text-2xl font-bold text-white">
