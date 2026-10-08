@@ -12,12 +12,10 @@
         </div>
 
         <section class="py-5">
-
-            <!-- Header -->
             <div class="px-10 py-10">
 
             <h1 class="text-4xl font-bold text-white">
-                    Admin Painel
+                Admin Painel
             </h1>
 
             <div class="mt-4 h-1 w-20 rounded-full bg-amber-400"></div>
@@ -25,17 +23,21 @@
             <p class="mt-2 text-gray-500 mb-2">
                 Manage or create products.
             </p>
-        
+            
+            <!-- Filter Status --> 
+            <x-admin.order.modal-status-filter :order="$orders" />
+
             <!-- Session Messages -->
             @session('order')
-                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300 mb-5">{{ session('order') }}</div>
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold mt-5 text-green-300 mb-5">{{ session('order') }}</div>
             @endsession
 
+            
             <!-- Order -->
             <div class="flex flex-col gap-4 px-10 mt-10 pb-10">
 
                 @forelse($orders as $order)
-                    <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg">
+                    <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg border border-3 border-gray-700">
                         <div class="flex items-center justify-between gap-6 border-b border-gray-300 px-6 py-5">
                             <div class="flex items-center gap-4">
                                 <span class="rounded-lg bg-gray-950 px-4 py-2 font-bold text-white">Order #{{ $order->id }}</span>
@@ -53,7 +55,7 @@
                                 </div>
 
                                 <div class="flex items-center gap-2">
-                                    <span class="font-bold text-gray-700">Status:</span>
+                                    <span class="font-bold text-gray-700">Status: <span class="text-orange-600 font-bold">{{ $order->status }}</span>  </span>
                                     <x-admin.order.status-dropdown :order="$order"/>
                                 </div>
                             </div>
@@ -75,7 +77,6 @@
 
                     </div>
                 @empty
-
                     <div class="rounded-xl bg-gray-100 p-10 text-center font-bold text-gray-500">No orders found.</div>
                 @endforelse
             </div>

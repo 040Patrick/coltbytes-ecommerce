@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <button type="button" @click="addCategory = false" class="w-full rounded-xl bg-red-500 mt-6 px-8 py-3 font-bold text-black transition hover:bg-red-400">
+        <button type="button" @click="addCategory = false" class="w-full rounded-xl bg-gray-950 mt-6 px-8 py-3 border border-gray-700  font-bold text-gray-200 transition hover:bg-gray-900">
             Close
         </button>
     </div>

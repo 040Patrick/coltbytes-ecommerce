@@ -33,13 +33,14 @@
                     <!-- Form -->
                     <div x-show="add" x-cloak class="fixed inset-0 z-50 flex items-center justify-center  bg-gray-950/70" @click.self="add = false">
                         <div class="relative w-full max-w-2xl bg-gray-950 p-10 rounded-2xl">
-                            <form action="{{ route('admin.products.store') }}" method="post">
+                            <form action="{{ route('admin.products.store') }}" method="post" class="p-3 bg-gray-900 rounded-xl border border-gray-700">
                                 @csrf
                                 <x-admin.product.form title="Create" button="Create"/>
+
                             </form>
 
                             <!-- Close create form -->
-                            <button @click="add = false" type="button" class="absolute right-4 top-4 rounded bg-red-500 p-2 px-4 font-bold text-black hover:bg-red-400">
+                            <button @click="add = false" type="button" class="absolute right-4 top-4 rounded-xl bg-gray-950 p-2 px-4 font-bold text-gray-200 hover:bg-gray-900 border border-gray-700">
                                 Close
                             </button>
                         </div>
@@ -63,7 +64,7 @@
 
             <!-- Products -->
             @forelse($products as $product)
-                <div class="mx-10 m-4 flex flex-row items-center gap-4 rounded bg-white px-10 py-5">
+                <div class="mx-20 m-4 flex flex-row items-center gap-4 rounded-xl bg-white px-10 py-5 border border-3 border-gray-700 ">
                     <p class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-950 text-xl font-bold text-white">
                         {{ $product->id }}
                     </p>

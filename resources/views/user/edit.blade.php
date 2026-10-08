@@ -16,13 +16,13 @@
         </div>
 
         @session('updated')
-            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
+            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 mt-5 py-3 text-center font-bold text-green-300">
                 {{ session('updated') }}
             </div>
         @endif
 
         @session('phone')
-            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300">
+            <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 mt-5 py-3 text-center font-bold text-green-300">
                 {{ session('phone') }}
             </div>
         @endif
@@ -93,11 +93,11 @@
 
                 </div>
 
-                <!-- Actions -->
-                <div class="mt-6 flex gap-3 items-center ">
-                    <button type="submit" class="rounded-lg bg-amber-400 py-3 mt-3 font-bold text-black transition hover:bg-amber-300 w-full max-w-xl px-10">
-                        Save changes
-                    </button>
+                <!-- Actions --> 
+                <div class="mt-6 flex items-center"> 
+                    <button type="submit" class="w-full max-w-xl rounded-lg bg-amber-400 px-10 py-3 font-bold text-black transition hover:bg-amber-300"> 
+                        Save changes 
+                    </button> 
                 </div>
             </form>
 

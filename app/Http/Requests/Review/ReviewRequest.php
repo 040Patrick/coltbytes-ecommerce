@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Requests\Phone;
+namespace App\Http\Requests\Review;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePhoneRequest extends FormRequest
+class ReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,8 @@ class StorePhoneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => [
-                'required',
-                'string',
-                'regex:/^\(\d{2}\)\s?\d{4,5}-\d{4}$/',
-            ],
+            'rating' => ['required', 'integer', 'between:1,5'],
+            'comment' => ['nullable', 'string', 'max:500']
         ];
     }
 }

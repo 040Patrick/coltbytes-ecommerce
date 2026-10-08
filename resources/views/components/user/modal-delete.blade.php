@@ -6,8 +6,8 @@
         @method('delete')
 
         <!-- Delete button -->
-        <button type="button" @click="confirmDelete = true" class="w-full rounded-lg bg-red-500 py-3 mt-3 font-bold text-black transition hover:bg-red-400 w-full max-w-xl px-10">
-            Delete Account
+        <button type="button" @click="confirmDelete = true" class="rounded-lg bg-red-500 mt-3 font-bold p-3 text-black transition hover:bg-amber-300 w-full max-w-xl px-10">
+            Delete Account?
         </button>
 
         <!-- Modal -->

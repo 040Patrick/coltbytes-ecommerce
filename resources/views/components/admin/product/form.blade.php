@@ -55,7 +55,7 @@
     </div>
 
     <!-- Action -->
-    <button type="submit" class="w-full bg-amber-400 hover:bg-amber-300 text-black mb-2 text-center font-bold p-3 rounded"> 
+    <button type="submit" class="w-full bg-amber-400 hover:bg-amber-300 text-black mb-2 text-center font-bold p-3 rounded-xl"> 
         {{ $button }}
     </button>
 </div>

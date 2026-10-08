@@ -15,10 +15,14 @@
                 </p>
             </div>
  
+            @session('review')
+                <div class="rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold text-green-300 mb-5">{{ session('review') }}</div>
+            @endsession
+            
             <section class="grid grid-cols-1 p-5 gap-10 rounded-xl">
                 @forelse($orders as $order)
                     <!-- Order -->
-                    <div class="flex flex-col bg-white rounded-2xl p-6 gap-6 shadow-lg">
+                    <div class="flex flex-col bg-white rounded-2xl border border-gray-700 border-3 p-6 gap-6 shadow-lg">
  
                         <!-- Order information -->
                         <div class="flex flex-wrap justify-between gap-5">
@@ -51,24 +55,37 @@
                         </div>
  
                         <!-- Address -->
-                        <div class="border-t border-gray-200 pt-5">
-                            <h2 class="mb-3 text-lg font-bold text-black">
-                                Shipping address
-                            </h2>
- 
-                            <div class="text-gray-700">
-                                <p>
-                                    {{ $order->address->street }}, {{ $order->address->number }}
-                                </p>
-                                <p>
-                                    {{ $order->address->neighborhood }}
-                                </p>
-                                <p>
-                                    {{ $order->address->city }} - {{ $order->address->state }}
-                                </p>
-                                <p>
-                                    ZIP: {{ $order->address->zip_code }}
-                                </p>
+                        <div class="flex gap-10 border-t border-gray-200 pt-5">
+                            <div class="flex justify-start">
+                                <!-- Start -->
+                                <div class="text-gray-700 gap-15">
+                                    <h2 class="mb-3 text-lg font-bold text-black">
+                                        Shipping address
+                                    </h2>
+                                    <p>
+                                        {{ $order->address->street }}, {{ $order->address->number }}
+                                    </p>
+                                    <p>
+                                        {{ $order->address->neighborhood }}
+                                    </p>
+                                    <p>
+                                        {{ $order->address->city }} - {{ $order->address->state }}
+                                    </p>
+                                    <p>
+                                        ZIP: {{ $order->address->zip_code }}
+                                    </p>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                        
+                        <div class="flex gap-10 border-t border-gray-200 pt-5">
+                            <div class="flex justify-center">
+                                @can('store', $order)
+                                    <x-order.modal-review-show :order="$order"/>
+                                @endcan
                             </div>
                         </div>
  

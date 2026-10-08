@@ -13,7 +13,7 @@ class OrderController extends Controller
      */
     public function index(): View
     {
-        $orders = Auth::user()->orders()->with('orderItems')->get();
+        $orders = Auth::user()->orders()->latest()->with('orderItems')->get();
 
         return view('order.index', ['title' => 'My orders', 'orders' => $orders]);
     }

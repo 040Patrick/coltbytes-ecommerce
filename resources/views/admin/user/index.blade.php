@@ -33,7 +33,7 @@
             <!-- Users -->
             <div class="flex flex-col gap-4 mx-10 mt-10">
                 @forelse($users as $user)
-                    <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg">
+                    <div class="overflow-hidden rounded-xl bg-gray-100 shadow-lg border border-3 border-gray-700">
                         <!-- User information -->
                         <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-gray-200 p-5">
                             <div>

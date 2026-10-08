@@ -8,7 +8,7 @@
     </div>
 
     <!-- Search bar -->
-    <div class="flex items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
         <div class="rounded-xl border border-black/30 bg-gray-950 p-2">
             <form action="{{ route('home') }}" method="GET" class="flex gap-2">
                 <input type="text" name="search" value="{{ request('search') }}"  placeholder="Search products..."  class="max-w-2xl rounded-lg border border-black/20 bg-white px-4 py-2 outline-none focus:border-amber-400">
@@ -17,6 +17,17 @@
                 </button>
             </form>
         </div>
+        @auth
+            @forelse(auth()->user()->addresses as $address)
+                <a href="{{ route('address.index') }}" class="translate-y-1 text-center font-bold text-white mt-5 hover:scale-110">
+                    📍 {{ $address->state }} - {{ $address->city }} - {{ $address->number }}
+            </a>    
+            @empty
+                <a href="{{ route('address.index') }}" class="translate-y-1 text-amber-400 font-bold mt-5 hover:text-amber-300 hover:undeline hover:scale-110">
+                    Add Address
+                </a>
+            @endforelse
+        @endauth
     </div>
     
     <!-- Nav links -->

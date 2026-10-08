@@ -21,6 +21,7 @@ use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Phone\PhoneController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Review\ReviewController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route; 
@@ -62,8 +63,11 @@ Route::middleware('guest')->group(function () {
  * Auth Routes
  */
 Route::middleware('auth')->group(function () {
+    // Logout
     Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
-    
+    // Rate 
+    Route::post('/review/{product}', [ReviewController::class, 'store'])->name('review.store');
+
     // Verified
     Route::middleware('verified')->group(function () {
         // Profile
