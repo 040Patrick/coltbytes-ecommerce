@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Review;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\ReviewRequest;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    public function store(ReviewRequest $request, Product $product)
+    public function store(ReviewRequest $request, Order $order, Product $product)
     {
         $data = $request->validated();
 
-        dd($data);
         Auth::user()->reviews()->create([
+            'order_id' => $order->id,
             'product_id' => $product->id,
             'rating' => $data['rating'],
             'comment' => $data['comment']

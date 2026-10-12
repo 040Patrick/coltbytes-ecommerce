@@ -1,53 +1,54 @@
 @props(['order'])
-<div x-data="{ open : false }">
+<div x-data="{ open: false }">
 
-    @can('store', $order) 
-        <div> 
-            <button type="button" @click="open = true" class="cursor-pointer rounded-xl p-2 text-center font-bold text-black"> You haven't reviewed this product yet. 
-                <span class="text-orange-600 transition-transform duration-200 hover:scale-110 hover:underline">Do you want to review it?</span> 
-            </button> 
-        </div> 
-    @endcan 
-    
+    <!-- Review Store --> 
+    <x-order.modal-review-store :order="$order" />
 
-    <div x-show="open" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-5">
-        <div class="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-gray-950 p-5">
+    <div x-show="open" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" @click.self="open = false" @keydown.escape.window="open = false">
+        <div class="w-full max-w-xl overflow-y-auto rounded-2xl border border-gray-800 bg-gray-950 p-6 shadow-xl">
+
+            <div class="mb-6 flex items-center justify-between border-b border-gray-800 pb-4">
+                <h2 class="text-2xl font-bold text-white">
+                    Rate your order
+                </h2>
+
+                <button type="button" @click="open = false" class="text-2xl text-gray-400 transition hover:text-white">&times;</button>
+            </div>
+
             @foreach($order->orderItems as $item)
-                <form action="{{ route('review.store', $item->product_id) }}" method="post" class="space-y-5 p-5 bg-gray-900 rounded-xl border border-gray-700">
-                    <h1 class="text-gray-200 text-2xl p-2 font-bold text-center">
-                        Tell us what you think of your order
-                    </h1>
+                <form action="{{ route('review.store', [$order->id, $item->product_id]) }}" method="post" class="space-y-5">
+                    @csrf
 
-                    <!-- Fields -->
-                    <div class="flex flex-col gap-5">
-                        <!-- Rating -->
-                        <div x-data="{ current: 0 }">
-                            @error('rating')
-                                <div class="text-center font-bold text-red-600">{{ $message }}</div>
-                             @enderror  
-                            <label for="comment" class="text-gray-200 font-bold">Rate:</label>
-                            <input name="rating" type="number" value="3">
+                    <!-- Rating --> 
+                    <div x-data="{ rating : 0}" class="flex flex-col gap-2">
+                        <div class="flex justify-center gap-2">
+                            <template x-for="star in 5" :key="star">
+                                <button type="button" @click="rating = star" class="font-bold text-5xl transition-colors durations-700" :class="star <= rating ? 'text-amber-400' : 'text-gray-200'">
+                                    ★
+                                </button>
+                            </template>
+
                         </div>
+                            <input type="hidden" name="rating" :value="rating">
+                            <p class="text-center text-gray-200 font-bold">You rated: <span x-text="rating"></span> / 5</p>
+                        @error('rating')
+                            <p class="text-center text-red-500 font-bold pt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                        <!-- Comment -->
-                        <div class="flex w-full flex-col gap-5">
-                            @error('comment')
-                                <div class="text-center font-bold text-red-600">{{ $message }}</div>
-                            @enderror   
-
-                            <label for="comment" class="text-gray-200 font-bold">Comment:</label>
-                            <textarea name="comment" id="comment" maxnlength="500" rows="5" class="w-full resize-none rounded-xl border border-gray-700 bg-gray-950 p-3 text-gray-200 outline-none focus:border-amber-400""></textarea>
-                        </div>
+                    <!-- Comment -->
+                    <div class="space-y-2">
+                        <label for="comment-{{ $item->product_id }}" class="font-semibold text-gray-200">Comment <span class="text-gray-500">(optional)</span></label>
+                        <textarea name="comment" id="comment-{{ $item->product_id }}" maxlength="500" rows="4" placeholder="Write your review..." class="w-full resize-none rounded-xl border border-gray-700 bg-gray-900 p-3 text-gray-200 outline-none focus:border-amber-400"></textarea>
+                        @error('comment')
+                            <p class="text-sm text-red-400">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Actions -->
-                    <div class="flex gap-3">
-                        <button type="submit" @click="open = true" class="w-full bg-amber-400 text-black text-center font-bold rounded-xl p-2 hover:bg-amber-300">
-                            Review
-                        </button>
-
-                        <button type="button" @click="open = false" class="w-1/3 bg-gray-950 hover:bg-gray-900 text-gray-200 text-center border border-gray-700 font-bold rounded-xl p-2">
-                            Close
+                    <div class="flex gap-3 border-t border-gray-800 pt-4">
+                        <button type="submit" class="flex-1 rounded-xl bg-amber-400 px-4 py-2 font-bold text-black transition hover:bg-amber-300">
+                            Send review
                         </button>
                     </div>
                 </form>

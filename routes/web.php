@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
     // Rate 
-    Route::post('/review/{product}', [ReviewController::class, 'store'])->name('review.store');
+    Route::post('/review/{order}/{product}', [ReviewController::class, 'store'])->name('review.store');
 
     // Verified
     Route::middleware('verified')->group(function () {

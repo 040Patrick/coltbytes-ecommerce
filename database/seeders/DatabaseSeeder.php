@@ -10,6 +10,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Profile;
+use App\Models\Review;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -83,10 +84,14 @@ class DatabaseSeeder extends Seeder
                     'product_id' => $product->id
                 ]);
             });
+
+            $admin->profile()->create([
+                'user_id' => $admin->id
+            ]);
         });
 
         /**
-         * Create 5 order for each user 
+         * Create 3 order for each user 
          */
         $users->each(function ($user) {
 

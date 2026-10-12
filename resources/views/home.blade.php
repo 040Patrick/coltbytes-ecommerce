@@ -1,11 +1,11 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mx-30 mb-30 mt-30 flex items-center justify-center bg-amber-10 px-20 py-16">
+    <div class="mx-30 mb-30 mt-15 flex items-center justify-center bg-amber-10 px-20 py-16">
         <section class="w-full px-30">
 
             <!-- Outdoor -->
-            <div class="relative mb-30 min-h-100 w-full overflow-hidden rounded-3xl bg-gray-950 shadow-2xl">
+            <div class="relative mb-25 min-h-100 w-full overflow-hidden rounded-3xl bg-gray-950 shadow-2xl">
 
                 <!-- image -->
                 <img src="{{ Illuminate\Support\Facades\Storage::url('public/outdoor/outdoor.png') }}" alt="ColtBytes" class="absolute inset-0 h-full w-full object-cover">
