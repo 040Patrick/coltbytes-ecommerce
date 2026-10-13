@@ -134,13 +134,22 @@
                     @forelse($product->reviews as $review)
                         <div class="flex flex-col rounded-xl border border-gray-700 hover:border-gray-500">
                             <!-- Start -->
-                            <div class="flex  justify-between p-5">
-                                <p class="text-gray-200 font-semibold">{{ $review->user->fullname }}</p>
-                                <p class="font-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
+                            <div class="flex  justify-between items-center p-5">
 
-                                 <div class="flex shrink-0 items-center gap-1" title="{{ $review->rating }} de 5 estrelas">
+                                <!-- User -->
+                                <div class="flex flex items-center gap-2">
+                                    <a href="{{ route('user.show', $review->user) }}" title="see {{ $review->user->fullName }}'s perfil" class="hover:cursor-pointer">
+                                        <img src="{{ Illuminate\Support\Facades\Storage::url($review->user->profile?->avatar ?? Illuminate\Support\Facades\Storage::url('public/avatars/default-avatar.jpg') ) }}" class="h-10 w-10 rounded-full object-cover">
+                                    </a>
+
+                                    <p class="text-gray-200 font-semibold">{{ $review->user->fullname }}</p>
+                                    <p class="px-5 font-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
+                                </div>
+
+                                
+                                <div class="hover:scale-104">
                                     @for($i = 1; $i <= 5; $i++)
-                                        <span class="{{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-200' }}">★</span>
+                                        <span class="{{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-300' }}">★</span>
                                     @endfor
                                 </div>
                             </div>

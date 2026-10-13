@@ -26,6 +26,11 @@ class UserController extends Controller implements HasMiddleware
         ];
     }
 
+    public function show(User $user): View
+    {
+        return view('user.show', ['user' => $user, 'title' => "{$user->first_name}'s perfil"]);
+    }
+
     /**
      * Show the form for editing the specified user.
      */
