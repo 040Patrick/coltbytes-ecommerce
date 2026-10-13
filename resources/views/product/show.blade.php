@@ -45,8 +45,12 @@
                     </div> 
                 @endif
             </div>
+
+            <a href="#review" class="p-5 text-white hover:underline hover:cursor-pointer" id="reviews" title="See reviews">See reviews ⭐</a>
+
             <!-- Product Information -->
             <div class="p-8 lg:p-12">
+
 
                 <!-- Name -->
                 <h1 class="text-center text-4xl font-bold text-white lg:text-5xl">
@@ -118,6 +122,41 @@
                     </div>
                 </div>
 
+            <div class="mt-10 border-t border-white/10 pt-5"></div>
+
+            
+            <div id="review" >
+                <!-- Title -->
+                <div class="flex flex-col gap-5">
+                    <h1 class="text-2xl text-center font-bold text-gray-200">Reviews</h1>
+
+                    <!-- Review -->
+                    @forelse($product->reviews as $review)
+                        <div class="flex flex-col rounded-xl border border-gray-700 hover:border-gray-500">
+                            <!-- Start -->
+                            <div class="flex  justify-between p-5">
+                                <p class="text-gray-200 font-semibold">{{ $review->user->fullname }}</p>
+                                <p class="font-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
+
+                                 <div class="flex shrink-0 items-center gap-1" title="{{ $review->rating }} de 5 estrelas">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <span class="{{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-200' }}">★</span>
+                                    @endfor
+                                </div>
+                            </div>
+
+                            @if($review->comment)
+                                <p class="px-7 pb-5 text-gray-300">{{ $review->comment }}</p>
+                            @endif
+                        </div>
+                    @empty 
+                        <div class="flex flex-col rounded-xl border border-gray-700 hover:border-gray-500">
+                            <div class="flex justify-between p-5">
+                                <p class="text-gray-200 font-semibold">This Product does not have any review yet.</p>  
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
             </div>
         </section>
     </div>
