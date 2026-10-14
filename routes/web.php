@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Checkout\StripeWebhookController;
 use App\Http\Controllers\Contact\ContactController;
@@ -67,21 +68,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
     // Rate 
     Route::post('/review/{order}/{product}', [ReviewController::class, 'store'])->name('review.store');
-
+    // Cart
+    Route::resource('/cart', CartController::class);
     // Verified
     Route::middleware('verified')->group(function () {
         // Profile
         Route::resource('/profile', ProfileController::class)->only('index', 'update', 'destroy');
+
         // Account 
         Route::get('/account', [AccountController::class, 'index'])->name('account.index');
         Route::get('/account/show', [AccountController::class, 'show'])->name('account.show');
+
         // User
         Route::resource('/user', UserController::class)->except('store');
-        
+
         // Address 
         Route::resource('/address', AddressController::class);
+
         // Phone
         Route::resource('/phone', PhoneController::class)->only('update', 'destroy', 'store');
+
         // User Order 
         Route::get('/orders', [OrderController::class, 'index'])->name('user.order.index');
 
@@ -97,17 +103,23 @@ Route::middleware('auth')->group(function () {
         Route::middleware('admin')->prefix('admin')->group(function () {
             // Index
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
+
             // Product
             Route::resource('/products', AdminProductController::class)->names('admin.products');
+
             // Order
             Route::resource('/order', AdminOrderController::class)->names('admin.orders');
+
             // User
             Route::resource('/users', AdminUserController::class)->names('admin.users');
+
             // Product Image
             Route::post('/images/{product}', [ProductImageController::class, 'store'])->name('products.images.store');
             Route::delete('/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
+
             // Role 
             Route::resource('/Role', OrderController::class);
+
             // Category
             Route::resource('/category', CategoryController::class)->only('store', 'destroy');
             Route::post('/product/{product}/categories', [CategoryController::class, 'sync'])->name('products.categories.sync');

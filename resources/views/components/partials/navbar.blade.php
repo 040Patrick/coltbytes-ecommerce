@@ -1,6 +1,17 @@
 <nav class="grid grid-cols-3 w-full bg-gray-950 px-10 py-8 gap-5 font-bold">
+
     <!-- Logo Start -->
     <div class="flex items-center justify-start">
+        @auth
+            <div x-data="{ open: false }" class="relative flex justify-center py-2 text-white">
+                <button type="button" @click="open = !open" aria-label="Open user menu" :aria-expanded="open">
+                    <x-icons.dropdown />
+                </button>
+                
+                <x-partials.dropdown />
+            </div>
+        @endauth
+
         <a href="{{ route('home') }}" class="px-12 text-4xl text-white">
             Colt<span class="text-amber-400">Bytes</span>
         </a>
@@ -57,17 +68,10 @@
             About
         </a>
 
-        @auth
-            <div x-data="{ open: false }" class="relative py-2 text-center text-white">
-                <button @click="open = !open">
-                    <x-icons.dropdown />
-                </button>
-
-                <div x-show="open" x-cloak @click.outside="open = false" class="absolute right-0 mt-2 w-48 rounded-2xl bg-amber-400 p-3">
-                    <x-partials.dropdown />
-                </div>
-            </div>
-        @else
+        <!-- Cart -->
+        <x-cart.modal-cart />
+        
+        @guest
             <div class="flex gap-2">
                 <a href="{{ route('register.index') }}" class="rounded-2xl bg-amber-400 p-3 text-black hover:bg-amber-300">
                     Register
@@ -77,7 +81,6 @@
                     Login
                 </a>
             </div>
-        @endauth
-
+        @endguest
     </div>
 </nav>

@@ -13,7 +13,7 @@
         @error('address_id')
             <p class="mt-2 text-sm font-medium text-red-500">{{ $message }}</p>
         @enderror
-        
+
         <!-- Product -->
         <section class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-950 shadow-xl">
             <!-- Product Image -->
@@ -76,8 +76,8 @@
                     </div>
                 </div>
 
-                <!-- Description -->
                 <div class="mt-10 border-t border-white/10 pt-8">
+                    <!-- Description -->
                     <h2 class="mb-4 text-xl font-bold text-white">
                         Description:
                     </h2>
@@ -85,12 +85,44 @@
                     <p class="leading-7 text-gray-400">
                         {{ $product->description }}
                     </p>
+
+                    <div class="mt-10 border-t border-white/10 pt-8"></div>
                 </div>
 
-                <!-- Buy -->
-                <a href="{{ route('checkout.index', $product) }}" class="block w-full my-10 rounded-xl bg-amber-400 px-6 py-3 text-center font-bold text-black transition hover:bg-amber-300">
-                    Buy
-                </a>
+               <!-- Buy -->
+                <div class="flex w-full items-center gap-3">
+                    <!-- Begin -->
+                    <div class="w-auto shrink-0">
+                        <form action="{{ route('cart.store') }}" method="post" class="flex items-center justify-center gap-3 rounded-xl bg-white px-3 py-3">
+                            @csrf
+
+                            <!-- Action -->
+                            <button type="submit" class="hover:cursor-pointer">
+                                <x-icons.cart />
+                            </button>
+
+                            <!-- Id --> 
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                            <!-- Quantity --> 
+                            <select name="quantity" id="quantity" class="bg-transparent outline-none">
+                                @for($i = 1; $i <= min($product->stock, 10); $i++)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </form>
+                    </div>
+                    <!-- Center -->
+                    <div class="flex-1">
+                        <a href="{{ route('checkout.index', $product) }}" class="block w-full rounded-xl bg-amber-400 py-3 text-center font-bold text-black transition hover:bg-amber-300">
+                            Buy
+                        </a>
+                    </div>
+                    <!-- End -->
+                    <div class=" rounded-xl border border-gray-700 px-3 py-3 text-center transition hover:border-gray-200">
+                        <p class="whitespace-nowrap text-sm text-gray-200">{{ $product->stock }} Available</p>
+                    </div>
+                </div>
 
                 <!-- Information -->
                 <div class="mt-10 space-y-3 border-t border-white/10 pt-6 text-sm">
@@ -145,11 +177,10 @@
                                     <p class="text-gray-200 font-semibold">{{ $review->user->fullname }}</p>
                                     <p class="px-5 font-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
                                 </div>
-
                                 
-                                <div class="hover:scale-104">
+                                <div class="hover:scale-105">
                                     @for($i = 1; $i <= 5; $i++)
-                                        <span class="{{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-300' }}">★</span>
+                                        <span class="text-2xl {{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-200' }}">*</span>
                                     @endfor
                                 </div>
                             </div>
