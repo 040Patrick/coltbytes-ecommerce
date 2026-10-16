@@ -12,7 +12,7 @@
             </div>
         @endauth
 
-        <a href="{{ route('home') }}" class="px-12 text-4xl text-white">
+        <a href="{{ route('home') }}" class="px-12 text-4xl text-gray-200">
             Colt<span class="text-amber-400">Bytes</span>
         </a>
     </div>
@@ -31,7 +31,7 @@
         @auth
             <!-- Show selected address -->
             @forelse(auth()->user()->addresses as $address)
-                <a href="{{ route('address.index') }}" class="translate-y-2.5 text-center font-bold text-white hover:scale-105">
+                <a href="{{ route('address.index') }}" class="translate-y-2.5 text-center font-bold text-gray-100 hover:scale-105">
                     📍 {{ $address->number }} - {{ $address->city }} -  {{ $address->state }}
                 </a>    
             @empty
@@ -45,39 +45,41 @@
     <!-- Links End-->
     <div class="flex items-center justify-end gap-2">
         @if(auth()->user()?->hasRole(['admin']))
-            <a href="{{ route('admin.index') }}" class="rounded p-3 text-center text-white hover:bg-blue-600 hover:text-black">
+            <a href="{{ route('admin.index') }}" class="rounded p-3 text-center text-gray-100 hover:bg-blue-600 hover:text-gray-900">
                 Admin
             </a>
         @endif
 
-        <a href="{{ route('home') }}" class="rounded p-3 text-center text-white hover:bg-amber-400 hover:text-black">
+        <a href="{{ route('home') }}" class="rounded p-3 text-center text-center text-gray-100  hover:bg-amber-400 hover:text-gray-900">
             Home
         </a>
 
         @auth
-            <a href="{{ route('profile.index') }}" class="rounded p-3 text-center text-white hover:bg-amber-400 hover:text-black">
+            <a href="{{ route('profile.index') }}" class="rounded p-3 text-center text-center text-gray-100  hover:bg-amber-400 hover:text-gray-900">
                 Profile
             </a>
         @endauth
 
-        <a href="{{ route('contact.index') }}" class="rounded p-3 text-center text-white hover:bg-amber-400 hover:text-black">
+        <a href="{{ route('contact.index') }}" class="rounded p-3 text-center text-center text-gray-100  hover:bg-amber-400 hover:text-gray-900">
             Contact
         </a>
 
-        <a href="{{ route('about.index') }}" class="rounded p-3 text-center text-white hover:bg-amber-400 hover:text-black">
+        <a href="{{ route('about.index') }}" class="rounded p-3 text-center text-gray-100 hover:bg-amber-400 hover:text-gray-900">
             About
         </a>
 
         <!-- Cart -->
-        <x-cart.modal-cart />
+        @auth
+            <x-cart.modal-cart />
+        @endauth
         
         @guest
             <div class="flex gap-2">
-                <a href="{{ route('register.index') }}" class="rounded-2xl bg-amber-400 p-3 text-black hover:bg-amber-300">
+                <a href="{{ route('register.index') }}" class="rounded-2xl bg-amber-400 p-3 text-gray-900 hover:bg-amber-300">
                     Register
                 </a>
 
-                <a href="{{ route('login') }}" class="rounded-2xl bg-amber-400 p-3 text-black hover:bg-amber-300">
+                <a href="{{ route('login') }}" class="rounded-2xl bg-amber-400 p-3 text-gray-900  hover:bg-amber-300">
                     Login
                 </a>
             </div>

@@ -46,11 +46,11 @@
                 @endif
             </div>
 
-            <a href="#review" class="p-5 text-white hover:underline hover:cursor-pointer" id="reviews" title="See reviews">See reviews ⭐</a>
+            <a  href="#review" class="p-5 text-white hover:underline hover:cursor-pointer" id="reviews" title="See reviews">See reviews ⭐</a>
+            <div id="cart"><!-- Cart Freg --></div>
 
             <!-- Product Information -->
             <div class="p-8 lg:p-12">
-
 
                 <!-- Name -->
                 <h1 class="text-center text-4xl font-bold text-white lg:text-5xl">
@@ -89,11 +89,15 @@
                     <div class="mt-10 border-t border-white/10 pt-8"></div>
                 </div>
 
-               <!-- Buy -->
+                @session('success')
+                    <div class="mx-5 rounded-xl border border-green-700 bg-green-900/40 px-4 py-3 text-center font-bold mt-5 text-green-300 mb-5">{{ session('success') }}</div>
+                @endsession
+
+                <!-- Buy -->
                 <div class="flex w-full items-center gap-3">
                     <!-- Begin -->
                     <div class="w-auto shrink-0">
-                        <form action="{{ route('cart.store') }}" method="post" class="flex items-center justify-center gap-3 rounded-xl bg-white px-3 py-3">
+                        <form action="{{ route('cart.store') }}" method="post" title="add to cart" class="flex items-center justify-center gap-3 hover:bg-gray-100 rounded-xl bg-white px-3 py-3">
                             @csrf
 
                             <!-- Action -->
@@ -112,12 +116,22 @@
                             </select>
                         </form>
                     </div>
+
                     <!-- Center -->
-                    <div class="flex-1">
-                        <a href="{{ route('checkout.index', $product) }}" class="block w-full rounded-xl bg-amber-400 py-3 text-center font-bold text-black transition hover:bg-amber-300">
-                            Buy
-                        </a>
-                    </div>
+                    @if($product->stock === 0)
+                        <div class="flex-1">
+                            <p class="block w-full rounded-xl border border-gray-700 py-3 text-center font-bold text-gray-200 hover:border-gray-200">
+                                Out of stock
+                            </p>
+                        </div>
+                    @else   
+                        <div class="flex-1">
+                            <a href="{{ route('checkout.index', $product) }}" class="block w-full rounded-xl bg-amber-400 py-3 text-center font-bold text-black transition hover:bg-amber-300">
+                                Buy
+                            </a>
+                        </div>
+                    @endif
+
                     <!-- End -->
                     <div class=" rounded-xl border border-gray-700 px-3 py-3 text-center transition hover:border-gray-200">
                         <p class="whitespace-nowrap text-sm text-gray-200">{{ $product->stock }} Available</p>

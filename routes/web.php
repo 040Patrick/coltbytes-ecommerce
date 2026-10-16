@@ -69,7 +69,18 @@ Route::middleware('auth')->group(function () {
     // Rate 
     Route::post('/review/{order}/{product}', [ReviewController::class, 'store'])->name('review.store');
     // Cart
-    Route::resource('/cart', CartController::class);
+    Route::controller(CartController::class)->prefix('cart')->name('cart.')->group(function () {
+        Route::post('', 'store')->name('store');
+        Route::delete('{}', 'destroy')->name('destroy');
+        Route::post('-/{product}', 'minusOne')->name('minus');
+        Route::post('+/{product}', 'plusOne')->name('plus');
+        Route::delete('/removeAll', 'removeAll')->name('removeAll');
+    });
+
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+
     // Verified
     Route::middleware('verified')->group(function () {
         // Profile

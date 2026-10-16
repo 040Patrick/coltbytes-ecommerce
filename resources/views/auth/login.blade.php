@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Login page(made by ia) -->
-    <div class="flex min-h-[80vh] items-center justify-center px-6 py-16">
+    <div class="flex mt-20 min-h-[80vh] items-center justify-center px-6 py-16">
         <div class="w-full max-w-xl rounded-lg bg-gray-950 px-10 py-12">
 
             <!-- Page header -->
